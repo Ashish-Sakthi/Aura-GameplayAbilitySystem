@@ -4,10 +4,17 @@
 #include "Player/AuraPlayerController.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
+#include "Interaction/EnemyInterface.h"
 
 AAuraPlayerController::AAuraPlayerController()
 {
 	bReplicates = true;
+}
+
+void AAuraPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+	CursorTrace();
 }
 
 void AAuraPlayerController::BeginPlay()
@@ -34,13 +41,61 @@ void AAuraPlayerController::BeginPlay()
 	SetInputMode(InputModeData);
 }
 
-void AAuraPlayerController::SetupInputComponent()
+void AAuraPlayerController::CursorTrace()
 {
-	Super::SetupInputComponent();
+	FHitResult CursorHit;
+	GetHitResultUnderCursor(ECC_Visibility,false,CursorHit);
+	if (!CursorHit.bBlockingHit) return;
 
-	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
+	LastEnemy = ThisEnemy;
+	ThisEnemy = CursorHit.GetActor(); // No need to cast the actor to EnemyInterface as we are using TScriptInterface in .h file.
 
-	EnhancedInputComponent->BindAction(MoveAction,ETriggerEvent::Triggered,this,&AAuraPlayerController::Move);
+	/**
+		 Line trace from cursor. There are several scenarios:
+		 * A. LastActor is null && ThisActor is null
+		     - Do nothing
+		 * B. LastActor is null && ThisActor is valid
+		     - Highlight ThisActor
+		 * C. LastActor is valid && ThisActor is null
+		     - UnHighlight LastActor
+		 * D. Both actors are valid, but LastActor != ThisActor
+		     - UnHighlight LastActor, and Highlight ThisActor
+		 * E. Both actors are valid, and are the same actor
+		     - Do nothing
+	 */
+
+	if (LastEnemy == nullptr)
+	{
+		if (ThisEnemy != nullptr)
+		{
+			FName temp = FName(ThisEnemy.GetObject()->GetName());
+			UE_LOG(LogTemp,Display,TEXT("%s"),*temp.ToString());
+			ThisEnemy->HighlightActor(); // Case B
+		}
+		else
+		{
+			// Case A
+		}
+	}
+	else
+	{
+		if (ThisEnemy == nullptr)
+		{
+			LastEnemy->UnHighlightActor(); // Case C
+		}
+		else
+		{
+			if (ThisEnemy != LastEnemy)
+			{
+				LastEnemy->UnHighlightActor(); // Case D
+				ThisEnemy->HighlightActor();
+			}
+			else
+			{
+				// Case E
+			}
+		}
+	}
 }
 
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
@@ -59,4 +114,11 @@ void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 	}
 }
 
+void AAuraPlayerController::SetupInputComponent()
+{
+	Super::SetupInputComponent();
 
+	UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(InputComponent);
+
+	EnhancedInputComponent->BindAction(MoveAction,ETriggerEvent::Triggered,this,&AAuraPlayerController::Move);
+}

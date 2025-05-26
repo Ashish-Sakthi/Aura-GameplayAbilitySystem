@@ -101,8 +101,8 @@ void AAuraPlayerController::CursorTrace()
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 {
 	const FVector2D InputAxisVector = InputActionValue.Get<FVector2D>();
-	const FRotator controllerRotation = GetControlRotation();
-	const FRotator YawRotation = FRotator(0,controllerRotation.Yaw,0);
+	const FRotator ControllerRotation = GetControlRotation();
+	const FRotator YawRotation = FRotator(0,ControllerRotation.Yaw,0);
 
 	const FVector ForwardVector = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 	const FVector RightVector = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);

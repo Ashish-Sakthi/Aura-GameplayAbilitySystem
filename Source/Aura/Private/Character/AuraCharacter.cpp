@@ -5,7 +5,10 @@
 
 #include "AbilitySystemComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Player/AuraPlayerController.h"
 #include "Player/AuraPlayerState.h"
+#include "UI/Hud/AuraHUD.h"
+#include "UI/WidgetController/AuraWidgetController.h"
 
 AAuraCharacter::AAuraCharacter()
 {
@@ -44,4 +47,14 @@ void AAuraCharacter::InitAbilityActorInfo()
 	AuraPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(AuraPlayerState,this);
 	AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
 	AttributeSet = AuraPlayerState->GetAttributeSet();
+
+	//Initialize HUD after all the information is set for both server and client.
+	//Should no use assert check() as on the client this will be null for other player's character.
+	if (AAuraPlayerController* AuraPlayerController = Cast<AAuraPlayerController>(GetController()))
+	{
+		if (AAuraHUD* AuraHud = Cast<AAuraHUD>(AuraPlayerController->GetHUD()))
+		{
+			AuraHud->InitOverlay(AuraPlayerController,AuraPlayerState,AbilitySystemComponent,AttributeSet);
+		}
+	}
 }

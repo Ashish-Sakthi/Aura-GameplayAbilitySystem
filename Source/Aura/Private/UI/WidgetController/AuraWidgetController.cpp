@@ -1,5 +1,14 @@
 // Copyright Ashish
 
+/*
+ * Base Controller.
+ * Holds common UI control logic
+ * Stores essential references to:
+	- Player Controller
+	- Player State
+	- Ability System Component
+	- Attribute Set
+*/
 
 #include "UI/WidgetController/AuraWidgetController.h"
 

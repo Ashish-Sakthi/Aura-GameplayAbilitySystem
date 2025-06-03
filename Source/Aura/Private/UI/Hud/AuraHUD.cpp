@@ -39,6 +39,9 @@ void AAuraHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySyst
 	OverlayWidget = Cast<UAuraUserWidget>(Widget);
 	OverlayWidget->SetWidgetController(WidgetController);
 
+	//Broadcast initial values to the widgets from the controller via dynamic delegates.
+	WidgetController->BroadcastInitialValues();
+
 	Widget->AddToViewport();
 }
 

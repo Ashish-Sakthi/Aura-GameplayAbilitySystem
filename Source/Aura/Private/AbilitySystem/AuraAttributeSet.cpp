@@ -8,10 +8,10 @@ UAuraAttributeSet::UAuraAttributeSet()
 {
 	/* InitHealth comes from ATTRIBUTE_ACCESSORS macro which creates:
 	 * GAMEPLAYATTRIBUTE_VALUE_INITTER(Health) */
-	InitHealth(100);
-	InitMaxHealth(150);
-	InitMana(100);
-	InitMaxMana(200);
+	InitHealth(50);
+	InitMaxHealth(100);
+	InitMana(25);
+	InitMaxMana(100);
 }
 
 // Sets up property replication for network play

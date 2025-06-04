@@ -17,6 +17,7 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 	{
 		OverlayWidgetController = NewObject<UOverlayWidgetController>(this,OverlayWidgetControllerClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
+		OverlayWidgetController->BindCallbacksToDependencies();
 		return OverlayWidgetController;
 	}
 	return OverlayWidgetController;
@@ -39,7 +40,7 @@ void AAuraHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySyst
 	OverlayWidget = Cast<UAuraUserWidget>(Widget);
 	OverlayWidget->SetWidgetController(WidgetController);
 
-	//Broadcast initial values to the widgets from the controller via dynamic delegates.
+	//Broadcast initial values to the widgets from the controller via dynamic delegates after setting the controller.
 	WidgetController->BroadcastInitialValues();
 
 	Widget->AddToViewport();

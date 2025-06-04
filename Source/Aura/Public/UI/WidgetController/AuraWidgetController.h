@@ -41,7 +41,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
 
+	//Called when the widget controller is created.To broadcast the initial values in widgets.
 	virtual void BroadcastInitialValues();
+	virtual void BindCallbacksToDependencies();
 	
 protected:
 	// Variables needed for the widget contoller to get and update data. 
@@ -56,4 +58,5 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly,Category="WidgetController")
 	TObjectPtr<UAttributeSet> AttributeSet;
+
 };

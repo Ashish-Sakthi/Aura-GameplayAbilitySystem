@@ -36,12 +36,19 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 		AuraAttributeSet->GetMaxManaAttribute()).AddUObject(this,&UOverlayWidgetController::MaxManaChanged);
 
 	//AddLambda create a lambda function and call it instead of creating a new function.
+	//This is used to broadcast the data row that matches the tag to the Widgets.
 	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda( 
-		[](const FGameplayTagContainer& TagContainer)
+		[this](const FGameplayTagContainer& TagContainer)
 		{
 			for (FGameplayTag Tag : TagContainer)
 			{
-				UE_LOG(LogTemp, Warning, TEXT("In WC Tag: %s"), *Tag.ToString());
+				// "Message.1".MatchesTag("Message") will return True, "Message".MatchesTag("Message.1") will return False
+				const FGameplayTag MessageTag = FGameplayTag::RequestGameplayTag(TEXT("Message"));
+				if(Tag.MatchesTag(MessageTag))
+				{
+					const FUIWidgetRow* Row = GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable,Tag);
+					OnMessageWidgetDataChanged.Broadcast(*Row);
+				}
 			}
 		}
 	);

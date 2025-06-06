@@ -90,7 +90,7 @@ void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
 			// If the effect belongs to the target actor's ASC
 			if (HandlePair.Value == TargetASC)
 			{
-				// Remove the gameplay effect from the target
+				//Remove the gameplay effect from the target.
 				TargetASC->RemoveActiveGameplayEffect(HandlePair.Key,1);
 				HandlesToRemove.Add(HandlePair.Key);
 			}

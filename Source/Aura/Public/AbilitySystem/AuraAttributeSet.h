@@ -58,7 +58,9 @@ public:
 	UAuraAttributeSet();
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
+	//Use PreAttributeChange to modify the value of an attribute before it is changed.Only use for clamping ranges.
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue) override;
+	//Use PostAttributeChange to modify the value of an attribute after it is changed.
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Health, Category = "Vitals")
@@ -90,6 +92,6 @@ public:
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
 
 private:
-
+	//Use this function to get all the important data from the effect from the "Data" variable and store it in "Props" Struct.
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;
 };

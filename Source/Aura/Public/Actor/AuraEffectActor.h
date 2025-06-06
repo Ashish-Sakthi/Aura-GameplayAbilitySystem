@@ -33,9 +33,7 @@ class AURA_API AAuraEffectActor : public AActor
 	
 public:	
 	// Sets default values for this actor's properties
-	AAuraEffectActor();
-
-	
+	AAuraEffectActor();	
 
 protected:
 	// Called when the game starts or when spawned
@@ -44,6 +42,7 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	void ApplyEffectToTarget(AActor* TargetActor,TSubclassOf<UGameplayEffect> GameplayEffectClass);
 
+	//To apply effects based on the policy when overlap occurs.
 	UFUNCTION(BlueprintCallable)
 	void OnOverlap(AActor* TargetActor);
 
@@ -53,6 +52,7 @@ protected:
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Applied Effects")
 	bool bDestroyOnEffectRemoval = false;
 
+	//All effect policies are applicable for OnOverlap and OnEndOverlap functions.User Defined in cpp.
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Applied Effects")
 	TSubclassOf<UGameplayEffect> InstantGameplayEffectClass;
 

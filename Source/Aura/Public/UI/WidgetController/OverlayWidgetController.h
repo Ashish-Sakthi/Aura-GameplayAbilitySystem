@@ -27,11 +27,10 @@ struct FUIWidgetRow : public FTableRowBase
 	UTexture2D* Image = nullptr;
 };
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHealthChangedSignature, float, NewHealth);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxHealthChangedSignature, float, NewMaxHealth);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnManaChangedSignature, float, NewMana);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMaxManaChangedSignature, float, NewMaxMana);
+//Delegate that broadcasts the attribute changes to the UI.
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAttributeChangedSignature, float, NewValue);
 
+//Delegate that broadcasts the data for the message widget.
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMessageWidgetDataSignature, FUIWidgetRow, MessageWidgetRow);
 
 /*
@@ -53,29 +52,22 @@ public:
 
 	//BlueprintAssignable specifies that this delegate can be assigned to in Blueprints 
 	UPROPERTY(BlueprintAssignable,Category = "GAS|Attributes")
-	FOnHealthChangedSignature OnHealthChanged;
+	FOnAttributeChangedSignature OnHealthChanged;
 
 	UPROPERTY(BlueprintAssignable,Category = "GAS|Attributes")
-	FOnMaxHealthChangedSignature OnMaxHealthChanged;
+	FOnAttributeChangedSignature OnMaxHealthChanged;
 
 	UPROPERTY(BlueprintAssignable,Category = "GAS|Attributes")
-	FOnManaChangedSignature OnManaChanged;
+	FOnAttributeChangedSignature OnManaChanged;
 
 	UPROPERTY(BlueprintAssignable,Category = "GAS|Attributes")
-	FOnMaxManaChangedSignature OnMaxManaChanged;
+	FOnAttributeChangedSignature OnMaxManaChanged;
 
 	UPROPERTY(BlueprintAssignable,Category = "GAS|Message")
 	FMessageWidgetDataSignature OnMessageWidgetDataChanged;
 
 protected:
-	/*The parameters should be "const FOnAttributeChangeData& Data" to bind to
-	the delegate GetGameplayAttributeValueChangeDelegate(Attribute).AddObject(this,&class::Fncn).*/
-	void HealthChanged(const FOnAttributeChangeData& Data) const;
-	void MaxHealthChanged(const FOnAttributeChangeData& Data) const;
-	void ManaChanged(const FOnAttributeChangeData& Data) const;
-	void MaxManaChanged(const FOnAttributeChangeData& Data) const;
-
-
+	
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly,Category="Widget Data")
 	TObjectPtr<UDataTable> MessageWidgetDataTable;
 

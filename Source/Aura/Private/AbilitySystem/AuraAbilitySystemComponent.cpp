@@ -9,7 +9,7 @@ void UAuraAbilitySystemComponent::AbilityActorInfo_OnSet()
 	OnGameplayEffectAppliedDelegateToSelf.AddUObject(this, &UAuraAbilitySystemComponent::EffectApplied);
 }
 
-
+//Passes the tags of the GE to the widget via the delegate using the tag container.
 void UAuraAbilitySystemComponent::EffectApplied(UAbilitySystemComponent* AbilitySystemComponent,
 	const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle)
 {

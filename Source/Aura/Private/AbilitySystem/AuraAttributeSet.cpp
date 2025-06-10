@@ -10,10 +10,7 @@
 // Constructor - Initialize default values if needed
 UAuraAttributeSet::UAuraAttributeSet()
 {
-	/* InitHealth comes from ATTRIBUTE_ACCESSORS macro which creates:
-	 * GAMEPLAYATTRIBUTE_VALUE_INITTER(Health) */
-	InitHealth(10.f);
-	InitMana(10.f);
+	
 }
 
 // Used to clamp the current value of Health and Mana attributes

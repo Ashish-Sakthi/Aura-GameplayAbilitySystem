@@ -9,8 +9,10 @@
 
 #include "UI/Hud/AuraHUD.h"
 #include "UI/Widget/AuraUserWidget.h"
+#include "UI/WidgetController/AttributeInfoWidgetController.h"
 #include "UI/WidgetController/OverlayWidgetController.h"
 
+//Creates the controller and returns it.
 UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetControllerParams& WCParams)
 {
 	if (OverlayWidgetController == nullptr)
@@ -18,12 +20,23 @@ UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetCont
 		OverlayWidgetController = NewObject<UOverlayWidgetController>(this,OverlayWidgetControllerClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
 		OverlayWidgetController->BindCallbacksToDependencies();
-		return OverlayWidgetController;
 	}
 	return OverlayWidgetController;
 }
 
-//Called after initializing valid values for PC, PS, ASC, AS in AuraCharacter.
+//Creates the controller and returns it.Used in BP from Blueprint library function.
+UAttributeInfoWidgetController* AAuraHUD::GetAttributeInfoWidgetController(const FWidgetControllerParams& WCParams)
+{
+	if (AttributeInfoWidgetController == nullptr)
+	{
+		AttributeInfoWidgetController = NewObject<UAttributeInfoWidgetController>(this,AttributeInfoWidgetControllerClass);
+		AttributeInfoWidgetController->SetWidgetControllerParams(WCParams);
+		AttributeInfoWidgetController->BindCallbacksToDependencies();
+	}
+	return AttributeInfoWidgetController;
+}
+
+//Called after initializing valid values for PC, PS, ASC, AS in AuraCharacter.cpp
 void AAuraHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySystemComponent* ASC, UAttributeSet* AS)
 {
 	checkf(OverlayWidgetClass,TEXT("OverlayWidgetClass is not set, Fill in BP_AuraHUD.h"));
@@ -45,5 +58,3 @@ void AAuraHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySyst
 
 	Widget->AddToViewport();
 }
-
-

@@ -7,6 +7,8 @@
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 
+//Constructed in AuraHUD.cpp
+
 void UOverlayWidgetController::BroadcastInitialValues()
 {
 	const UAuraAttributeSet* AuraAttributeSet = CastChecked<UAuraAttributeSet>(AttributeSet);

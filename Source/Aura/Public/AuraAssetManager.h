@@ -8,7 +8,7 @@
 
 /**
  * UAuraAssetManager is a custom implementation of the UAssetManager class.
- * It is responsible for initializing and managing game-specific assets.
+ * It is responsible for initializing and managing game-specific tags.
  */
 UCLASS()
 class AURA_API UAuraAssetManager : public UAssetManager

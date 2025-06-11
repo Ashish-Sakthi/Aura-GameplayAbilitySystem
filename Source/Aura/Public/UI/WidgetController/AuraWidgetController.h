@@ -42,6 +42,7 @@ public:
 	void SetWidgetControllerParams(const FWidgetControllerParams& WCParams);
 
 	//Called when the widget controller is created.To broadcast the initial values in widgets.
+	UFUNCTION(BlueprintCallable)
 	virtual void BroadcastInitialValues();
 	virtual void BindCallbacksToDependencies();
 	

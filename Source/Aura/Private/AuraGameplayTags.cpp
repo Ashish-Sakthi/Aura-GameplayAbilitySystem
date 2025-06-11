@@ -4,7 +4,6 @@
 #include "GameplayTagsManager.h"
 
 //Using this method to use gameplay tags as variables.
-
 //Contains all created gameplay tags.
 FAuraGameplayTags FAuraGameplayTags::GameplayTags;
 

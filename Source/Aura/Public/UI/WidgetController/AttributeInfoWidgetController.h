@@ -7,6 +7,7 @@
 #include "UI/WidgetController/AuraWidgetController.h"
 #include "AttributeInfoWidgetController.generated.h"
 
+//Sends the struct data to the attribute menu.
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAttributeInfoSignature,const FAuraAttributeInfo&,Info );
 /**
  * 
@@ -24,6 +25,7 @@ public:
 	FAttributeInfoSignature AttributeInfoDelegate;
 
 protected:
+	//Gets the DA in BP
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UAttributeInfo> AttributeInfo;
 };

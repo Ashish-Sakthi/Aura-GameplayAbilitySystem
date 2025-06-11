@@ -9,9 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3dbde49e-bef3-4e3d-a4dd-e3377752ff6c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Aura.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Aura.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/UI/Globes/MI_FlowingUIBG.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/UI/Globes/MI_FlowingUIBG.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/StartupMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/StartupMap.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Character/AuraCharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Character/AuraCharacterBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/AttributeMenu/WBP_AttributeMenu.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/AttributeMenu/WBP_AttributeMenu.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/AttributeMenu/WBP_TextValueButtonRow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/AttributeMenu/WBP_TextValueButtonRow.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/Button/WBP_Button.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/Button/WBP_Button.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/Overlay/WBP_Overlay.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/Overlay/WBP_Overlay.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,18 +28,26 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://2" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet.." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet.." root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///AIAssistantSnippet.." root0="SKIP_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://6" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Aura/Aura.Build.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Aura/Private/Player/AuraPlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/Aura/Private/Player/AuraPlayerState.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/Experimental/TextureGraph/Shaders/Utils/MinMaxDownsample.usf" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Private/AbilitySystemComponent.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/AudioCaptureImplementations/AudioCaptureRtAudio/Private/RtAudio.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/AugmentedReality/Public/ARPin.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Private/Compression/lz4.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/Engine/GameEngine.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Public/Net/UnrealNetwork.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Experimental/Chaos/Public/Chaos/HeightField.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Experimental/IoStoreOnDemand/Private/LatencyInjector.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/GameplayTags/Classes/GameplayTagContainer.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/GameplayTags/Private/GameplayTagContainer.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/TraceLog/Private/Trace/LZ4/lz4.c.inl" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -181,6 +192,8 @@
       <workItem from="1749458060664" duration="7388000" />
       <workItem from="1749525696867" duration="11634000" />
       <workItem from="1749543178091" duration="3101000" />
+      <workItem from="1749611973079" duration="9448000" />
+      <workItem from="1749625112321" duration="59000" />
     </task>
     <servers />
   </component>

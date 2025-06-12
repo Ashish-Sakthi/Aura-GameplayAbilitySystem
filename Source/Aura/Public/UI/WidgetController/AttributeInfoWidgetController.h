@@ -7,6 +7,7 @@
 #include "UI/WidgetController/AuraWidgetController.h"
 #include "AttributeInfoWidgetController.generated.h"
 
+struct FGameplayAttribute;
 //Sends the struct data to the attribute menu.
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAttributeInfoSignature,const FAuraAttributeInfo&,Info );
 /**
@@ -28,4 +29,7 @@ protected:
 	//Gets the DA in BP
 	UPROPERTY(EditDefaultsOnly)
 	TObjectPtr<UAttributeInfo> AttributeInfo;
+
+private:
+	void BroadcastAttributeInfo(FGameplayTag AttributeTag, const FGameplayAttribute& Attribute) const;
 };

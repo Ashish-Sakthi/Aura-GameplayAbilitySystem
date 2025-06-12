@@ -2,27 +2,44 @@
 
 
 #include "UI/WidgetController/AttributeInfoWidgetController.h"
-
-#include "AuraGameplayTags.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "AbilitySystem/Data/AttributeInfo.h"
 
 void UAttributeInfoWidgetController::BroadcastInitialValues()
 {
-	//Need AS to Set the value in data asset struct
 	UAuraAttributeSet* AS = CastChecked<UAuraAttributeSet>(AttributeSet);
-	check(AS);
+	check(AttributeInfo);
 
-	/*
-	 * Get the struct from DA and Set the value then broadcast it.
-	 * FAuraGameplayTags::Get() returns struct of gameplay tags and can access tags as variables from AGTags.h.
-	 */
-	FAuraAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(FAuraGameplayTags::Get().Attributes_Primary_Strength,false);
-	Info.AttributeValue = AS->GetStrength();
+	//The map contains tags and GetAttribute Function Pointers.
+	for (auto& Pair : AS->TagsToAttributes)
+	{
+		BroadcastAttributeInfo(Pair.Key,Pair.Value());
+	}
+}
+
+//Live Updates the attribute info widgets.
+void UAttributeInfoWidgetController::BindCallbacksToDependencies()
+{
+	UAuraAttributeSet* AS = CastChecked<UAuraAttributeSet>(AttributeSet);
+	check(AttributeInfo);
+	
+	for (auto& Pair : AS->TagsToAttributes)
+	{
+		//Bind the every attribute to the attribute change delegate.
+		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(Pair.Value()).AddLambda(
+		[this, Pair](const FOnAttributeChangeData& Data)
+				{
+					BroadcastAttributeInfo(Pair.Key,Pair.Value());
+				}
+		);
+	}
+}
+
+//Gets the key and value of the map and broadcasts the attribute info to the widgets.
+void UAttributeInfoWidgetController::BroadcastAttributeInfo(FGameplayTag AttributeTag, const FGameplayAttribute& Attribute) const
+{
+	FAuraAttributeInfo Info = AttributeInfo->FindAttributeInfoForTag(AttributeTag,false);
+	Info.AttributeValue = Attribute.GetNumericValue(AttributeSet);
 	AttributeInfoDelegate.Broadcast(Info);
 }
 
-void UAttributeInfoWidgetController::BindCallbacksToDependencies()
-{
-	
-}

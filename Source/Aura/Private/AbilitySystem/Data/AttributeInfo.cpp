@@ -3,7 +3,7 @@
 
 #include "AbilitySystem/Data/AttributeInfo.h"
 
-
+//DA that is created to send info to the attribute menu.
 //Checks all the attribute in the struct and returns the one that matches the tag.
 FAuraAttributeInfo UAttributeInfo::FindAttributeInfoForTag(const FGameplayTag& AttributeTag, bool bLogNotFound) const
 {

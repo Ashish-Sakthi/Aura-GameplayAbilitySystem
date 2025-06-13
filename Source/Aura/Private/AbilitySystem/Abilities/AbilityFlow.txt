@@ -1,0 +1,81 @@
+﻿1. Setting Up Input (In Editor)
+
+        1. First, create an **Input Action** (e.g., "IA_Fireball")
+           - This represents a physical input (like pressing '1' on keyboard)
+        
+        2. Create an **Input Config Data Asset**:
+           - This connects Input Actions to Gameplay Tags
+           - Example setup:
+        
+        Input Action: IA_Fireball
+             Input Tag: "Ability.Skill.Fireball"
+        
+        
+        3. Create your **Ability Blueprint**:
+           - Inherit from AuraGameplayAbility
+           - Set its StartupInputTag to match the Input Tag (e.g., "Ability.Skill.Fireball")
+
+
+2. The Flow (What Happens When You Press a Button)
+
+        Let's say you press the key bound to "Fireball":
+        
+        1. Input Detection**:
+           - The game detects you pressed the key bound to "IA_Fireball"
+        
+        2. Tag Matching**:
+           - The system looks up what tag is associated with "IA_Fireball"
+           - Finds the tag "Ability.Skill.Fireball"
+        
+        3. Controller Response**:
+           - PlayerController receives this input
+           - Calls either AbilityInputTagPressed, Released, or Held
+        
+        4. Ability System**:
+           - The AbilitySystemComponent looks for abilities with matching tags
+           - When it finds a match, it activates that ability
+
+3. Simple Example
+
+Let's say you want to create a Fireball ability:
+
+1. **In the Editor**:
+
+1. Create Input Action "IA_Fireball"
+2. In Input Config Data Asset:
+   - Input Action: IA_Fireball
+   - Input Tag: "Ability.Skill.Fireball"
+3. In Fireball Ability Blueprint:
+   - Set StartupInputTag = "Ability.Skill.Fireball"
+
+
+
+2. What Happens When You Press the Key**:
+
+1. Press key bound to Fireball
+2. System sees "IA_Fireball" was triggered
+3. Looks up tag "Ability.Skill.Fireball"
+4. Finds Fireball ability with matching tag
+5. Activates Fireball ability
+
+
+
+ 4. Key Points for Beginners
+
+1. Tags are Like Names**:
+   - Think of tags as name tags that connect everything together
+   - The same tag must be used in both the Input Config and the Ability
+
+2. Three Input States**:
+   - Pressed (when you first press the key)
+   - Held (while you keep the key down)
+   - Released (when you let go of the key)
+
+3. The Chain of Events**:
+```
+Physical Input → Input Action → Gameplay Tag        →    Ability
+(Key Press)     (IA_Fireball)  (Ability.Skill.Fireball) (Fireball Ability)
+```
+
+
+Let me know if you need any part explained in more detail!

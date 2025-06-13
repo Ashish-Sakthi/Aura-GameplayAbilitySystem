@@ -3,6 +3,7 @@
 
 #include "Character/AuraCharacterBase.h"
 #include "AbilitySystemComponent.h"
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
 
 AAuraCharacterBase::AAuraCharacterBase()
 {
@@ -45,4 +46,13 @@ void AAuraCharacterBase::InitializeDefaultAttributes() const
 	ApplyEffectToSelf(DefaultPrimaryAttributes,1.0f);
 	ApplyEffectToSelf(DefaultSecondaryAttributes,1.0f);
 	ApplyEffectToSelf(DefaultVitalAttributes,1.0f);
+}
+
+//Add Ability to the Character only on the server.
+void AAuraCharacterBase::AddCharacterAbility()
+{
+	if (!HasAuthority()) return;// returns `true` if the current instance is running on the server
+	UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(GetAbilitySystemComponent());
+
+	AuraASC->AddCharacterAbilities(StartupAbilities);
 }

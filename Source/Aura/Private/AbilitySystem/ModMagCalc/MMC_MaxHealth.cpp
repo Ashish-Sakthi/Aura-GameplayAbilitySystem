@@ -5,6 +5,10 @@
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "Interaction/CombatInterface.h"
 
+/*
+ * MMC are used to calculate the magnitude of modifiers, including variables that are not attributes like level.
+ */
+
 UMMC_MaxHealth::UMMC_MaxHealth()
 {
 	// Setup Vigor capture definition to get Vigor attribute value from the target.

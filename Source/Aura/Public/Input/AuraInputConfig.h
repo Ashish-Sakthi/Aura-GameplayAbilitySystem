@@ -28,7 +28,8 @@ class AURA_API UAuraInputConfig : public UDataAsset
 	GENERATED_BODY()
 public:
 	const UInputAction* FindAbilityInputActionForTag(const FGameplayTag& InputTag,bool bLogNotFound = false) const;
-	
+
+	//Stores an array of structs(abilities) and makes it viewable in the editor.
 	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
 	TArray<FAuraInputAction> AbilityInputActions;
 };

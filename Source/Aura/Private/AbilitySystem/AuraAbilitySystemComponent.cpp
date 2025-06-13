@@ -18,12 +18,14 @@ void UAuraAbilitySystemComponent::AbilityActorInfo_OnSet()
  */
 void UAuraAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities)
 {
+	//Checks the list of abilities in Character BP.
 	for (TSubclassOf<UGameplayAbility> AbilityClass : StartupAbilities)
 	{
 		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(AbilityClass, 1);
 		if (const UAuraGameplayAbility* AuraAbility = Cast<UAuraGameplayAbility>(AbilitySpec.Ability))
 		{
-			//Adds the input tag to the ability spec to check if it is equal to the tag in any 
+			//Adds the input tag to the ability spec to check if it is equal to the tag in any
+			//DynamicAbilityTags is just a container of tags in the ability spec.
 			AbilitySpec.DynamicAbilityTags.AddTag(AuraAbility->StartupInputTag);
 			GiveAbility(AbilitySpec);
 		}
@@ -41,6 +43,7 @@ void UAuraAbilitySystemComponent::AbilityInputTagHeld(const FGameplayTag& InputT
 
 	for (FGameplayAbilitySpec& AbilitySpec : GetActivatableAbilities())
 	{
+		//Check if any ability spec has the input tag of InParam so that we can activate it.
 		if (AbilitySpec.DynamicAbilityTags.HasTagExact(InputTag))
 		{
 			AbilitySpecInputPressed(AbilitySpec);
@@ -65,6 +68,7 @@ void UAuraAbilitySystemComponent::AbilityInputTagReleased(const FGameplayTag& In
 	{
 		if (AbilitySpec.DynamicAbilityTags.HasTagExact(InputTag))
 		{
+			//Tells the ability that the input has been released.
 			AbilitySpecInputReleased(AbilitySpec);
 		}
 	}

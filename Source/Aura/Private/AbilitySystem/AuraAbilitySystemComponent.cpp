@@ -7,7 +7,7 @@
 void UAuraAbilitySystemComponent::AbilityActorInfo_OnSet()
 {
 	// Delegate Called whenever GE applies an effect to the ASC	
-	OnGameplayEffectAppliedDelegateToSelf.AddUObject(this, &UAuraAbilitySystemComponent::EffectApplied);
+	OnGameplayEffectAppliedDelegateToSelf.AddUObject(this, &UAuraAbilitySystemComponent::ClientEffectApplied);
 }
 
 //Adds the ability to the character only on the server.
@@ -74,8 +74,8 @@ void UAuraAbilitySystemComponent::AbilityInputTagReleased(const FGameplayTag& In
 	}
 }
 
-//Passes the tags of the GE to the widget via the delegate using the tag container.
-void UAuraAbilitySystemComponent::EffectApplied(UAbilitySystemComponent* AbilitySystemComponent,
+//Passes the tags of the GE to the widget via the delegate using the tag container.Used
+void UAuraAbilitySystemComponent::ClientEffectApplied_Implementation(UAbilitySystemComponent* AbilitySystemComponent,
 	const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle)
 {
 	FGameplayTagContainer TagContainer;

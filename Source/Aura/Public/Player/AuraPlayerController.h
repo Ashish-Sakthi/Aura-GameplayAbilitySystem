@@ -12,6 +12,7 @@ class UAuraInputConfig;
 class IEnemyInterface;
 class UInputMappingContext;
 class UInputAction;
+class USplineComponent;
 struct FInputActionValue;
 
 
@@ -38,8 +39,9 @@ private:
 
 	void CursorTrace();
 
-	TScriptInterface<IEnemyInterface> LastEnemy; // You can easily access both the object and interface using TScriptInterface.
-	TScriptInterface<IEnemyInterface> ThisEnemy;
+	TScriptInterface<IEnemyInterface> LastActor; // You can easily access both the object and interface using TScriptInterface.
+	TScriptInterface<IEnemyInterface> ThisActor;
+	FHitResult CursorHit;
 
 	//Bind to all the inputs for abilities.
 	void AbilityInputTagPressed(FGameplayTag InputTag);
@@ -54,4 +56,18 @@ private:
 	TObjectPtr<UAuraAbilitySystemComponent> AuraAbilitySystemComponent;
 
 	UAuraAbilitySystemComponent* GetASC();
+
+	FVector CachedDestination = FVector::ZeroVector;
+	float FollowTime = 0.0f;//How long to follow the cursor.
+	float ShortPressThreshold = 0.3f;
+	bool bAutoRunning = false;
+	bool bTargeting = false;//hovering over enemy
+
+	UPROPERTY(EditAnywhere)
+	float AutoRunAcceptanceRadius = 50.0f;
+
+	UPROPERTY(VisibleAnywhere	)
+	TObjectPtr<USplineComponent> Spline;
+
+	void AutoRun();
 };

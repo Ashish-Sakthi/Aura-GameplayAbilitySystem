@@ -26,5 +26,12 @@ public:
 	void AbilityInputTagHeld(const FGameplayTag& InputTag);
 	void AbilityInputTagReleased(const FGameplayTag& InputTag);
 protected:
-	void EffectApplied(UAbilitySystemComponent* AbilitySystemComponent, const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle);
+
+	/*
+	 *Telling it is a client and need to receive conformation even if packet loss or network error.
+	 *Implementing it so that the message is shown in the client view.As OnGameplayEffectAppliedDelegateToSelf is a server side delegate.
+	 * Need client prefix and _Implementation postfix in function name to work.
+	 */
+	UFUNCTION(Client,Reliable)
+	void ClientEffectApplied(UAbilitySystemComponent* AbilitySystemComponent, const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle);
 };

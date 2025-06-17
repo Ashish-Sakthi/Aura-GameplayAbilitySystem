@@ -55,6 +55,7 @@ struct FEffectProperties
  */
 template<class T>
 using TStaticFuncPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
+// Can get fncn ptr of static fncn.
 
 /**
  * 

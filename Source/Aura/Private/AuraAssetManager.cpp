@@ -3,6 +3,7 @@
 
 #include "AuraAssetManager.h"
 #include "AuraGameplayTags.h"
+#include "AbilitySystemGlobals.h"
 
 /*
  * Asset Manager needs to be set in the engine config to work.
@@ -26,4 +27,7 @@ void UAuraAssetManager::StartInitialLoading()
 
 	//Initialize Gameplay Tags before loading any assets.
 	FAuraGameplayTags::InitializeNativeGameplayTags();
+
+	//Required to use target data.
+	UAbilitySystemGlobals::Get().InitGlobalData();	
 }

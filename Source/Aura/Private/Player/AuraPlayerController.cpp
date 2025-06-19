@@ -108,14 +108,10 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 		return;
 	}
 
-	//Hovering Over Enemy and LMB is pressed then Activate ability.
-	if (bTargeting)
-	{
-		if (GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
-	}
+	if (GetASC()) GetASC()->AbilityInputTagReleased(InputTag);
 
-	//Follow to a point	if LMB is Pressed
-	else
+	//Hovering Over Enemy and LMB is pressed then Activate ability.
+	if (!bTargeting && !bShiftPressed)
 	{
 		const APawn* ControlledPawn = GetPawn();
 		if (FollowTime <= ShortPressThreshold && ControlledPawn)
@@ -135,19 +131,20 @@ void AAuraPlayerController::AbilityInputTagReleased(FGameplayTag InputTag)
 		}
 		FollowTime = 0.f;
 		bTargeting = false;
-	}
+	}	
 }
 
 void AAuraPlayerController::AbilityInputTagHeld(FGameplayTag InputTag)
 {
-	//If LMB is not pressed, activate ability.
+	//If Tag is not LMB, activate ability.
 	if (!InputTag.MatchesTagExact(FAuraGameplayTags::Get().InputTag_LMB))
 	{
 		if (GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
+		return;
 	}
 	
 	//Hovering Over Enemy and LMB is pressed then Activate ability.
-	if (bTargeting)
+	if (bTargeting || bShiftPressed)
 	{
 		if (GetASC()) GetASC()->AbilityInputTagHeld(InputTag);
 	}
@@ -180,7 +177,6 @@ UAuraAbilitySystemComponent* AAuraPlayerController::GetASC()
 	return AuraAbilitySystemComponent;
 }
 
-
 void AAuraPlayerController::Move(const FInputActionValue& InputActionValue)
 {
 	const FVector2D InputAxisVector = InputActionValue.Get<FVector2D>();
@@ -204,6 +200,9 @@ void AAuraPlayerController::SetupInputComponent()
 	//Need to assign the InputComponent to the AuraInputComponent in project settings.
 	UAuraInputComponent* AuraInputComponent = CastChecked<UAuraInputComponent>(InputComponent);
 	AuraInputComponent->BindAction(MoveAction,ETriggerEvent::Triggered,this,&AAuraPlayerController::Move);
+
+	AuraInputComponent->BindAction(ShiftAction,ETriggerEvent::Started,this,&AAuraPlayerController::ShiftPressed);
+	AuraInputComponent->BindAction(ShiftAction,ETriggerEvent::Completed,this,&AAuraPlayerController::ShiftReleased);
 
 	//Gets the Input Config DA from the Blueprint and binds the actions to the function.
 	AuraInputComponent->BindAbilityActions(InputConfig,this,&ThisClass::AbilityInputTagPressed,&ThisClass::AbilityInputTagReleased,&ThisClass::AbilityInputTagHeld);

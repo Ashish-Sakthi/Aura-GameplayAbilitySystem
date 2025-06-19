@@ -2,6 +2,9 @@
 
 
 #include "AbilitySystem/Abilities/AuraProjectileSpell.h"	
+
+#include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystemComponent.h"
 #include "Actor/AuraProjectile.h"
 #include "Interaction/CombatInterface.h"
 
@@ -38,9 +41,12 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 			Cast<APawn>(GetOwningActorFromActorInfo()),
 			ESpawnActorCollisionHandlingMethod::AlwaysSpawn
 		);
-		//Used to complete spawning in deferred spawn. Else not spawned.
 
-		//TODO: Give the projectile a gameplayspec to apply damage
+		//Set the damage effect on the projectile.
+		const UAbilitySystemComponent* SourceASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetAvatarActorFromActorInfo());
+		const FGameplayEffectSpecHandle SpecHandle = SourceASC->MakeOutgoingSpec(DamageEffectClass,1,SourceASC->MakeEffectContext());
+		Projectile->DamageHandle = SpecHandle;
+		
 		Projectile->FinishSpawning(SpawnTransform);
 		
 	}

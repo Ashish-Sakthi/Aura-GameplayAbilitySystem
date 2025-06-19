@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayEffectTypes.h"
 #include "GameFramework/Actor.h"
 #include "AuraProjectile.generated.h"
 
@@ -20,6 +21,11 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<UProjectileMovementComponent> ProjectileMovement;
+
+	//Set on the spell while spawning.Handle is lightweight than the entire spec.
+	//Meta = (ExposeOnSpawn = true): Makes this property settable when the actor is spawned
+	UPROPERTY(BlueprintReadWrite, meta = (ExposeOnSpawn = true))
+	FGameplayEffectSpecHandle DamageHandle;
 	
 protected:
 	virtual void BeginPlay() override;

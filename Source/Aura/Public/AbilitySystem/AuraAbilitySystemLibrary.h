@@ -21,8 +21,7 @@ class AURA_API UAuraAbilitySystemLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 
-	public:
-
+public:
 	UFUNCTION(BlueprintPure,Category = "AuraAbilitySystemLibrary|WidgetController")
 	static UOverlayWidgetController* GetOverlayWidgetController(const UObject* WorldContextObject	);
 
@@ -30,5 +29,8 @@ class AURA_API UAuraAbilitySystemLibrary : public UBlueprintFunctionLibrary
 	static UAttributeInfoWidgetController* GetAttributeInfoWidgetController(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable,Category = "AuraAbilitySystemLibrary|CharacterClassDefaults")
-	static void InitializeDefaultAttributes(const UObject* GetWorldContextObject,ECharacterClass CharacterClass,float level,UAbilitySystemComponent* ASC);
+	static void InitializeDefaultAttributes(const UObject* WorldContextObject,ECharacterClass CharacterClass,float level,UAbilitySystemComponent* ASC);
+
+	UFUNCTION(BlueprintCallable,Category = "AuraAbilitySystemLibrary|CharacterClassDefaults")
+	static void GiveStartupAbilities(const UObject* WorldContextObject,UAbilitySystemComponent* ASC);
 };

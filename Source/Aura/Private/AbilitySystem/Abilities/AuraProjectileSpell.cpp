@@ -2,7 +2,7 @@
 
 
 #include "AbilitySystem/Abilities/AuraProjectileSpell.h"	
-
+#include "AuraGameplayTags.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
 #include "Actor/AuraProjectile.h"
@@ -45,8 +45,15 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 		//Set the damage effect on the projectile.
 		const UAbilitySystemComponent* SourceASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetAvatarActorFromActorInfo());
 		const FGameplayEffectSpecHandle SpecHandle = SourceASC->MakeOutgoingSpec(DamageEffectClass,1,SourceASC->MakeEffectContext());
+		const float ScaledDamage = Damage.GetValueAtLevel(GetAbilityLevel());
+		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Damage: %f"), ScaledDamage));
+		//SetByCaller GE: Instead of hardcoding the value for Damage, setting the value the values in the ability.
+		//Sends a key value pair of tag and magnitude to the GE.
+		//Makes the damage modular and can be used by any ability.
+		const FAuraGameplayTags GameplayTags = FAuraGameplayTags::Get();
+		UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle,GameplayTags.Damage,ScaledDamage);
+
 		Projectile->DamageHandle = SpecHandle;
-		
 		Projectile->FinishSpawning(SpawnTransform);
 		
 	}

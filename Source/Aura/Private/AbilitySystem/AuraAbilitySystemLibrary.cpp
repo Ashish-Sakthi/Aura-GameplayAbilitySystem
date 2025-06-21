@@ -11,10 +11,10 @@
 #include "UI/Hud/AuraHUD.h"
 
 //Creates a Function that is blueprint pure and static.
-UOverlayWidgetController* UAuraAbilitySystemLibrary::GetOverlayWidgetController(const UObject* GetWorldContextObject)
+UOverlayWidgetController* UAuraAbilitySystemLibrary::GetOverlayWidgetController(const UObject* WorldContextObject)
 {
 	//Getting the Local Player Controller
-	if(APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorldContextObject,0))
+	if(APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject,0))
 	{
 		if (AAuraHUD* AuraHud = Cast<AAuraHUD>(PC->GetHUD()))
 		{
@@ -29,10 +29,10 @@ UOverlayWidgetController* UAuraAbilitySystemLibrary::GetOverlayWidgetController(
 }
 
 UAttributeInfoWidgetController* UAuraAbilitySystemLibrary::GetAttributeInfoWidgetController(
-	const UObject* GetWorldContextObject)
+	const UObject* WorldContextObject)
 {
 	//Getting the Local Player Controller
-	if(APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorldContextObject,0))
+	if(APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject,0))
 	{
 		if (AAuraHUD* AuraHud = Cast<AAuraHUD>(PC->GetHUD()))
 		{
@@ -73,4 +73,18 @@ void UAuraAbilitySystemLibrary::InitializeDefaultAttributes(const UObject* World
 	VitalAttributeContextHandle.AddSourceObject(AvatarActor);
 	FGameplayEffectSpecHandle VitalAttributesSpecHandle = ASC->MakeOutgoingSpec(CharacterClassInfo->VitalAttributes,level,VitalAttributeContextHandle);
 	ASC->ApplyGameplayEffectSpecToSelf(*VitalAttributesSpecHandle.Data.Get());
+}
+
+void UAuraAbilitySystemLibrary::GiveStartupAbilities(const UObject* WorldContextObject, UAbilitySystemComponent* ASC)
+{
+	AAuraGameModeBase* AuraGameMode = Cast<AAuraGameModeBase>(UGameplayStatics::GetGameMode(WorldContextObject));
+	if (AuraGameMode == nullptr) return;
+
+	//Gives the abilities to the enemy. Does not activate here.
+	UCharacterClassInfo* CharacterClassInfo = AuraGameMode->CharacterClassInfo;
+	for (const TSubclassOf<UGameplayAbility> AbilityClass : CharacterClassInfo->CommonAbilities)
+	{
+		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(AbilityClass, 1);
+		ASC->GiveAbility(AbilitySpec);
+	}
 }

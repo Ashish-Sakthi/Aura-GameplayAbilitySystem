@@ -153,6 +153,16 @@ public:
 	FGameplayAttributeData Mana;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Mana);
 
+	/*
+	 * Meta Attributes
+	 * Instead of doing calculation on the health it calculate in the attribute set post effect . Gives flexibility.
+	 */
+
+	//Not replicated as Meta Attributes are only executed in the server.
+	UPROPERTY(BlueprintReadOnly, Category = "Meta Attributes")
+	FGameplayAttributeData IncomingDamage;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, IncomingDamage);
+
 	UFUNCTION()
 	void OnRep_Health(const FGameplayAttributeData& OldHealth) const;
 

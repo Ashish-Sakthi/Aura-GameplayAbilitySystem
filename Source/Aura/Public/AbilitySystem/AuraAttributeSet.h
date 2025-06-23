@@ -215,4 +215,6 @@ public:
 private:
 	//Use this function to get all the important data from the effect from the "Data" variable and store it in "Props" Struct.
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;
+
+	void ShowFloatingText(const FEffectProperties& Props,float Damage) const;
 };

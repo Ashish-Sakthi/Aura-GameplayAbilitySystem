@@ -37,7 +37,7 @@ void AAuraCharacterBase::Die()
 	MulticastHandleDeath();
 }
 
-//RPC runs on all clients and server.
+//RPC runs on all clients and server when a character is dead.
 void AAuraCharacterBase::MulticastHandleDeath_Implementation()
 {
 	Weapon->SetSimulatePhysics(true);
@@ -50,6 +50,8 @@ void AAuraCharacterBase::MulticastHandleDeath_Implementation()
 	GetMesh()->SetCollisionResponseToChannel(ECC_WorldStatic,ECR_Block);
 	
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	Dissolve();//Calls the dissolve effect for the character.
 }
 
 void AAuraCharacterBase::BeginPlay()
@@ -93,4 +95,21 @@ void AAuraCharacterBase::AddCharacterAbility()
 	UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(GetAbilitySystemComponent());
 
 	AuraASC->AddCharacterAbilities(StartupAbilities);
+}
+
+//Implements dissolve effect for enemy.
+void AAuraCharacterBase::Dissolve()
+{
+	if (IsValid(DissolveMaterialInstance))
+	{
+		UMaterialInstanceDynamic* DynamicMatInst = UMaterialInstanceDynamic::Create(DissolveMaterialInstance, this);
+		GetMesh()->SetMaterial(0, DynamicMatInst);//Sets the dynamic material as the first element as our enemy has only one material.
+		StartDissolveTimeline(DynamicMatInst);
+	}
+	if (IsValid(WeaponDissolveMaterialInstance))
+	{
+		UMaterialInstanceDynamic* DynamicMatInst = UMaterialInstanceDynamic::Create(WeaponDissolveMaterialInstance, this);
+		Weapon->SetMaterial(0, DynamicMatInst);
+		StartWeaponDissolveTimeline(DynamicMatInst);
+	}
 }

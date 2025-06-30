@@ -22,7 +22,7 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
          * This is used by Unreal Engine's reflection system to properly serialize the struct
          * @return The static struct information for this type
          */
-        virtual UScriptStruct* GetScriptStruct() const
+        virtual UScriptStruct* GetScriptStruct() const //Copied from parent 
         {
             return StaticStruct();
         }
@@ -32,7 +32,7 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
          * Important for gameplay effects that need to be modified without affecting the original
          * @return A new heap-allocated copy of this context
          */
-        virtual FAuraGameplayEffectContext* Duplicate() const
+        virtual FAuraGameplayEffectContext* Duplicate() const //Copied from parent
         {
             FAuraGameplayEffectContext* NewContext = new FAuraGameplayEffectContext();
             *NewContext = *this;
@@ -65,7 +65,7 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
 
 // Trait specification for the custom gameplay effect context
 // This tells Unreal Engine how to handle this struct
-template<>
+template<> //Copied from parent
 struct TStructOpsTypeTraits< FAuraGameplayEffectContext > : public TStructOpsTypeTraitsBase2< FAuraGameplayEffectContext >
 {
     enum

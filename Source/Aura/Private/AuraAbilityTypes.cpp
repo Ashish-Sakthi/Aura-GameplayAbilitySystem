@@ -1,6 +1,7 @@
 ﻿
 #include "AuraAbilityTypes.h"
 
+//Copied from parent but has 2 boolean for storing critical hit and block hit.
 bool FAuraGameplayEffectContext::NetSerialize(FArchive& Ar, UPackageMap* Map, bool& bOutSuccess)
 {
 	uint32 RepBits = 0;//acts a bool storing whether to serialize or not.

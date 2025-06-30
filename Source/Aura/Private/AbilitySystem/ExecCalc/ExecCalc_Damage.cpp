@@ -77,7 +77,12 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 
 
 	// Get Damage Set by caller magnitude.
-	float Damage = Spec.GetSetByCallerMagnitude(FAuraGameplayTags::Get().Damage);
+	float Damage = 0.f;
+
+	for (const auto& GT : FAuraGameplayTags::Get().DamageTypesToResistances)
+	{
+		Damage += Spec.GetSetByCallerMagnitude(GT.Key);
+	}
 	
 	//Capture Block Chance on target and determine if there was a successful block.
 	//If block half the damage.

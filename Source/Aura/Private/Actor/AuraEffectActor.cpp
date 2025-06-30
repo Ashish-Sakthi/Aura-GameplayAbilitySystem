@@ -34,7 +34,7 @@ void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGam
 	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(
 		GameplayEffectClass, ActorLevel, EffectContextHandle);//2 needed for 1
 	
-	// This actually applies the effect (damage, buff etc) defined in the GameplayEffectClass to the TargetASC and store it.
+	// This actually applies the effect (damage, buff, etc.) defined in the GameplayEffectClass to the TargetASC and store it.
 	 FActiveGameplayEffectHandle ActiveEffectHandle = TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());//1
 
 	const bool bIsInfinite = EffectSpecHandle.Data.Get()->Def.Get()->DurationPolicy == EGameplayEffectDurationType::Infinite;

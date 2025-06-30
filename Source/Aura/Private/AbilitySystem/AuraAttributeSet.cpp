@@ -77,7 +77,7 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 		SetMana(FMath::Clamp(GetMana(), 0.0f, GetMaxMana()));
 	}
 
-	//Meta attribute for incoming damage.
+	//Meta attribute for incoming damage. Only available on the server.
 	if (Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
 	{
 		const float LocalIncomingDamage = GetIncomingDamage();
@@ -114,7 +114,7 @@ void UAuraAttributeSet::ShowFloatingText(const FEffectProperties& Props,float Da
 {
 	if (Props.TargetCharacter != Props.SourceCharacter)
 	{
-		if(AAuraPlayerController* PlayerController = Cast<AAuraPlayerController>(UGameplayStatics::GetPlayerController(Props.SourceCharacter,0)))
+		if(AAuraPlayerController* PlayerController = Cast<AAuraPlayerController>(Props.SourceCharacter->Controller))
 		{
 			PlayerController->ShowDamageNumber(Damage,Props.TargetCharacter,bBlockedHit,bCriticalHit);
 		}

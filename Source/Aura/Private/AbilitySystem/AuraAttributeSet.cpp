@@ -77,19 +77,24 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 		SetMana(FMath::Clamp(GetMana(), 0.0f, GetMaxMana()));
 	}
 
-	//Meta attribute for incoming damage. Only available on the server.
+	//Meta-attribute for incoming damage. Only available on the server.
 	if (Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
 	{
+		// Get and reset the incoming damage value
 		const float LocalIncomingDamage = GetIncomingDamage();
 		SetIncomingDamage(0);
+	
 		if (LocalIncomingDamage > 0)
 		{
+			// Calculate and apply new health value after taking damage
 			const float NewHealth = GetHealth() - LocalIncomingDamage;
 			SetHealth(FMath::Clamp(NewHealth, 0.0f, GetMaxHealth()));
-			
+		
+			// Check if damage was fatal
 			const bool bFatal = NewHealth <= 0;
 			if (bFatal)
 			{
+				// If fatal, get combat interface and call Die()
 				ICombatInterface* CombatInterface = Cast<ICombatInterface>(Props.TargetAvatarActor);
 				if (CombatInterface)
 				{
@@ -98,11 +103,13 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 			}
 			else
 			{
+				// If not fatal, trigger hit reaction animation
 				FGameplayTagContainer TagContainer;
-                TagContainer.AddTag(FAuraGameplayTags::Get().Effects_HitReact);
-                Props.TargetASC->TryActivateAbilitiesByTag(TagContainer);//Checks all assigned ability to enemy asc.
+				TagContainer.AddTag(FAuraGameplayTags::Get().Effects_HitReact);
+				Props.TargetASC->TryActivateAbilitiesByTag(TagContainer);//Checks all assigned abilities to enemy asc.
 			}
-
+	
+			// Get block/crit info and show damage numbers
 			const bool bBlock = UAuraAbilitySystemLibrary::IsBlockedHit(Props.EffectContextHandle);
 			const bool bCritical = UAuraAbilitySystemLibrary::IsCriticalHit(Props.EffectContextHandle);
 			ShowFloatingText(Props, LocalIncomingDamage,bBlock,bCritical);

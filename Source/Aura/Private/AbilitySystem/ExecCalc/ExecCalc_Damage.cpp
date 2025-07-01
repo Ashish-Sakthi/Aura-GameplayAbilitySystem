@@ -108,8 +108,10 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 
 
 
-	// Get Damage Set by caller magnitude.
+	
+	// Calculate total damage by applying elemental resistances to each damage type
 	float Damage = 0.f;
+	// Iterates through each possible damage in the list of a damage type and its resistance.
 	for (const auto& Pair : FAuraGameplayTags::Get().DamageTypesToResistances)
 	{
 		const FGameplayTag DamageTypeTag = Pair.Key;
@@ -118,6 +120,7 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 		checkf(AuraDamageStatics().TagsToCaptureDefs.Contains(ResistanceTag), TEXT("TagsToCaptureDefs doesn't contain Tag: [%s] in ExecCalc_Damage"), *ResistanceTag.ToString());
 		const FGameplayEffectAttributeCaptureDefinition CaptureDef = AuraDamageStatics().TagsToCaptureDefs[ResistanceTag];
 
+		// Get Damage Set by caller magnitude.
 		float DamageTypeValue = Spec.GetSetByCallerMagnitude(Pair.Key);
 		
 		float Resistance = 0.f;
@@ -153,7 +156,7 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	UCharacterClassInfo* CharacterClassInfo = UAuraAbilitySystemLibrary::GetCharacterClassInfo(SourceAvatar);
 	FRealCurve* ArmorPenetrationCurve = CharacterClassInfo->DamageCalculationCoefficients->FindCurve(FName("ArmorPenetration"),FString());
 	const float ArmorPenetrationCoefficient = ArmorPenetrationCurve->Eval(SourceCombatInterface->GetPlayerLevel());
-	// Reduce target's armor based on attacker's armor penetration (e.g., 30% penetration means target only keeps 70% of armor)
+	// Reduce target's armor based on the attacker's armor penetration (e.g., 30% penetration means target only keeps 70% of armor)
 	const float EffectiveArmor = TargetArmor *= ( 100 - SourceArmorPenetration * ArmorPenetrationCoefficient ) / 100.f;
 	
 	// Assign the values from the curve table to the calc. 
@@ -163,7 +166,7 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 	Damage *= ( 100 - EffectiveArmor * EffectiveArmorCoefficient ) / 100.f;
 
 
-	
+	//Receive critical hit attributes.
 	float SourceCriticalHitChance = 0.f;
 	ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(DamageStatics().CriticalHitChanceDef, EvaluationParameters, SourceCriticalHitChance);
 	SourceCriticalHitChance = FMath::Max<float>(SourceCriticalHitChance, 0.f);

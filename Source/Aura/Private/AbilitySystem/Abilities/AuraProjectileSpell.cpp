@@ -41,7 +41,7 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 			ESpawnActorCollisionHandlingMethod::AlwaysSpawn
 		);
 
-		//Set the damage effect and context of the projectile.
+		//Set the damage effect, and it uses the custom context of the projectile.
 		const UAbilitySystemComponent* SourceASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(GetAvatarActorFromActorInfo());
 		FGameplayEffectContextHandle EffectContextHandle = SourceASC->MakeEffectContext();
 		EffectContextHandle.SetAbility(this);
@@ -61,6 +61,7 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 		//Makes the damage modular and can be used by any ability.
 		const FAuraGameplayTags GameplayTags = FAuraGameplayTags::Get();
 
+		// Iterates through pairs of damages and its curve table for the ability.
 		for (auto& Pair: DamageTypes)
 		{
 			const float ScaledDamage = Pair.Value.GetValueAtLevel(GetAbilityLevel());

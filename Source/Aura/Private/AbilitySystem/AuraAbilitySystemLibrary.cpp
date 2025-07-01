@@ -110,6 +110,7 @@ bool UAuraAbilitySystemLibrary::IsCriticalHit(const FGameplayEffectContextHandle
 	return false;
 }
 
+// Sets isBlockedHit in the context 
 void UAuraAbilitySystemLibrary::SetIsBlockedHit(FGameplayEffectContextHandle& ContextHandle, bool Block)
 {
 	if (FAuraGameplayEffectContext* AuraContext = static_cast<FAuraGameplayEffectContext*>(ContextHandle.Get()))
@@ -118,6 +119,7 @@ void UAuraAbilitySystemLibrary::SetIsBlockedHit(FGameplayEffectContextHandle& Co
 	}
 }
 
+// Sets isCriticalHit in the context
 void UAuraAbilitySystemLibrary::SetIsCriticalHit(FGameplayEffectContextHandle& ContextHandle, bool CriticalHit)
 {
 	if (FAuraGameplayEffectContext* AuraContext = static_cast<FAuraGameplayEffectContext*>(ContextHandle.Get()))

@@ -66,6 +66,11 @@ void AAuraPlayerController::ShowDamageNumber_Implementation(float DamageAmount, 
 	}
 }
 
+/**
+ * Auto runs the character along a spline path
+ * Stops when reaching destination within acceptance radius
+ * Called every tick while auto running is active
+ */
 void AAuraPlayerController::AutoRun()
 {
 	if (!bAutoRunning) return;
@@ -97,7 +102,6 @@ void AAuraPlayerController::CursorTrace()
 		if (ThisActor) ThisActor->HighlightActor();
 	}
 }
-
 
 /*
  * Ability related functions.Binded to input.

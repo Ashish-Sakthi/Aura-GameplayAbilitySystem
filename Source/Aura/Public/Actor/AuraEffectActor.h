@@ -50,7 +50,10 @@ protected:
 	void OnEndOverlap(AActor* TargetActor);
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Applied Effects")
-	bool bDestroyOnEffectRemoval = false;
+	bool bDestroyOnEffectRemovalApplication = false;
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Applied Effects")
+	bool bApplyEffectsToEnemies = false;
 
 	//All effect policies are applicable for OnOverlap and OnEndOverlap functions.User Defined in cpp.
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category="Applied Effects")

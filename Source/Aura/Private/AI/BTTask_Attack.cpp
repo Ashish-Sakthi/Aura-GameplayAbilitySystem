@@ -7,6 +7,6 @@
 
 EBTNodeResult::Type UBTTask_Attack::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	DrawDebugSphere(GetWorld(),OwnerComp.GetAIOwner()->GetPawn()->GetActorLocation(),40.f,12,FColor::Red,true,-1);
+	DrawDebugSphere(GetWorld(),OwnerComp.GetAIOwner()->GetPawn()->GetActorLocation(),40.f,12,FColor::Red,false,1);
 	return Super::ExecuteTask(OwnerComp, NodeMemory);
 }

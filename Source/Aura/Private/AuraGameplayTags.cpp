@@ -2,6 +2,7 @@
 
 #include "AuraGameplayTags.h"
 #include "GameplayTagsManager.h"
+#include "GameplayTagsSettings.h"
 
 //Using this method to use gameplay tags as variables.
 //Contains all created gameplay tags.
@@ -184,4 +185,10 @@ void FAuraGameplayTags::InitializeNativeGameplayTags()
 		FName("Effects.HitReact"),
 		FString("Hit React Tag")
 		);
+
+	GameplayTags.Abilities_Attack = UGameplayTagsManager::Get().AddNativeGameplayTag(
+		FName("Abilities.Attack"),
+		FString("Attack Ability Tag")
+		);
+	
 }

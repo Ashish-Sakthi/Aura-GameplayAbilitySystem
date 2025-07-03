@@ -25,7 +25,9 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
 	 * SpawnActorDiffered helps to modify the actor before actually spawning with finish spawning.
 	 */
 	FTransform SpawnTransform;
-	const FVector SocketLocation = ICombatInterface::Execute_GetCombatSocketLocation(GetAvatarActorFromActorInfo());
+	const FVector SocketLocation = ICombatInterface::Execute_GetCombatSocketLocation(
+		GetAvatarActorFromActorInfo(),
+		FAuraGameplayTags::Get().Montage_Attack_Weapon);
 	
 	SpawnTransform.SetLocation(SocketLocation);
 

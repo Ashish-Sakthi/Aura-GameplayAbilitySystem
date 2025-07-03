@@ -120,9 +120,14 @@ void UAuraAttributeSet::ShowFloatingText(const FEffectProperties& Props,float Da
 {
 	if (Props.TargetCharacter != Props.SourceCharacter)
 	{
-		if(AAuraPlayerController* PlayerController = Cast<AAuraPlayerController>(Props.SourceCharacter->Controller))
+		if(AAuraPlayerController* PC = Cast<AAuraPlayerController>(Props.SourceCharacter->Controller))
 		{
-			PlayerController->ShowDamageNumber(Damage,Props.TargetCharacter,bBlockedHit,bCriticalHit);
+			PC->ShowDamageNumber(Damage, Props.TargetCharacter, bBlockedHit, bCriticalHit);
+			return;
+		}
+		if(AAuraPlayerController* PC = Cast<AAuraPlayerController>(Props.TargetCharacter->Controller))
+		{
+			PC->ShowDamageNumber(Damage, Props.TargetCharacter, bBlockedHit, bCriticalHit);
 		}
 	}
 }

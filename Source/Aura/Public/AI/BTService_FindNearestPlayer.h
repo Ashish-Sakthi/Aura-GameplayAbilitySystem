@@ -7,7 +7,10 @@
 #include "BTService_FindNearestPlayer.generated.h"
 
 /**
- * 
+ * UBTService_FindNearestPlayer is a behavior tree service that identifies the nearest player or enemy
+ * based on the pawn's current tag and updates corresponding Blackboard keys with the target and its distance.
+ *
+ * This service is typically used to dynamically acquire the closest actor with a specified tag during AI behavior execution.
  */
 UCLASS()
 class AURA_API UBTService_FindNearestPlayer : public UBTService

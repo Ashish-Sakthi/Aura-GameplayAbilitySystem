@@ -7,8 +7,11 @@
 #include "TargetDataUnderMouse.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMouseTargetDataSignature, const FGameplayAbilityTargetDataHandle&, DataHandle);
+
 /**
- * 
+ * Task for detecting and processing target data under the mouse cursor.
+ * This ability task allows for gathering hit results under the mouse cursor
+ * and sending the target data to the server for validation and processing.
  */
 UCLASS()
 class AURA_API UTargetDataUnderMouse : public UAbilityTask

@@ -14,7 +14,10 @@ class UEnemyInterface : public UInterface
 };
 
 /**
- * 
+ * @brief Interface for enemy-related interactions in the game.
+ *
+ * This interface provides functionalities for highlighting actors and managing
+ * combat targets. Classes implementing this interface must override the virtual functions.
  */
 class AURA_API IEnemyInterface
 {

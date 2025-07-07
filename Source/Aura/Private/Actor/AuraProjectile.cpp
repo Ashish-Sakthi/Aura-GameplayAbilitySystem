@@ -58,7 +58,7 @@ void AAuraProjectile::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, 
                                       UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	//If same actor is overlapped do nothing.
-	if (DamageHandle.Data.IsValid() && DamageHandle.Data.Get()->GetContext().GetEffectCauser() == OtherActor)
+	if (!DamageHandle.Data.IsValid() || DamageHandle.Data.Get()->GetContext().GetEffectCauser() == OtherActor)
 	{
 		return;	
 	}

@@ -5,6 +5,10 @@
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystemComponent.h"
 
+/*
+* Applies damage effects to a target actor using gameplay tags and scalable damage values.
+* Creates and applies a gameplay effect spec with tag-based damage types to the target's ability system component.
+*/
 void UAuraDamageGameplayAbility::CauseDamage(AActor* TargetActor)
 {
 	FGameplayEffectSpecHandle DamageSpecHandle = MakeOutgoingGameplayEffectSpec(DamageEffectClass, 1.f);

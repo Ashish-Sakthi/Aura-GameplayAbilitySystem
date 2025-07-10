@@ -116,6 +116,10 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 	}
 }
 
+/**
+* Displays floating damage numbers for target character if different from source character.
+* Shows to source player controller first, then target player controller if source fails
+*/
 void UAuraAttributeSet::ShowFloatingText(const FEffectProperties& Props,float Damage,bool bBlockedHit,bool bCriticalHit) const
 {
 	if (Props.TargetCharacter != Props.SourceCharacter)

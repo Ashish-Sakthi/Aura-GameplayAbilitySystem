@@ -56,6 +56,12 @@ void AAuraProjectile::Destroyed()
 	Super::Destroyed();
 }
 
+/*
+* Handles sphere overlap events for projectiles, checks for valid targets, plays effects on hit,
+* and applies gameplay effects to enemies while avoiding friendly fire.
+* Network behavior: Effects and sounds play on all clients, but damage is only applied on server
+* and replicated to clients through the AbilitySystemComponent
+*/
 void AAuraProjectile::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
                                       UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {

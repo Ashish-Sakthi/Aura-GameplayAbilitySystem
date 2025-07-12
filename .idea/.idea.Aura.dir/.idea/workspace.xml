@@ -9,126 +9,13 @@
   <component name="ChangeListManager">
     <list default="true" id="40afd753-02d0-487b-9c1a-112ebffea475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Aura.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Aura.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Beacon/Material/Beacon_low_DefaultMaterial_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Beacon/Material/Beacon_low_DefaultMaterial_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Beacon/Material/Beacon_low_DefaultMaterial_Emissive.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Beacon/Material/Beacon_low_DefaultMaterial_Emissive.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Beacon/Material/Beacon_low_DefaultMaterial_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Beacon/Material/Beacon_low_DefaultMaterial_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Beacon/Material/Beacon_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Beacon/Material/Beacon_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Checkpoint/Material/Checkpoint_low_DefaultMaterial_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Checkpoint/Material/Checkpoint_low_DefaultMaterial_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Checkpoint/Material/Checkpoint_low_DefaultMaterial_Emissive.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Checkpoint/Material/Checkpoint_low_DefaultMaterial_Emissive.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Checkpoint/Material/Checkpoint_low_DefaultMaterial_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Checkpoint/Material/Checkpoint_low_DefaultMaterial_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Checkpoint/Material/Checkpoint_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Checkpoint/Material/Checkpoint_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/CornerSmall/T_SmallCorner_Base.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/CornerSmall/T_SmallCorner_Base.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/CornerSmall/T_SmallCorner_Norm.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/CornerSmall/T_SmallCorner_Norm.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/CornerSmall/T_SmallCorner_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/CornerSmall/T_SmallCorner_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/columns_rims_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/columns_rims_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/columns_rims_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/columns_rims_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/columns_rims_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/columns_rims_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/pillars_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/pillars_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/pillars_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/pillars_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/pillars_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/pillars_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/rail_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/rail_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/rail_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/rail_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/rail_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/rail_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/steps_wall_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/steps_wall_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/steps_wall_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/steps_wall_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/steps_wall_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Stairs/steps_wall_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1/Tileset1_low_DefaultMaterial_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1/Tileset1_low_DefaultMaterial_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1/Tileset1_low_DefaultMaterial_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1/Tileset1_low_DefaultMaterial_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1/Tileset1_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1/Tileset1_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tilese1x1_2/Tileset1x1_low_DefaultMaterial_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tilese1x1_2/Tileset1x1_low_DefaultMaterial_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tilese1x1_2/Tileset1x1_low_DefaultMaterial_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tilese1x1_2/Tileset1x1_low_DefaultMaterial_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tilese1x1_2/Tileset1x1_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tilese1x1_2/Tileset1x1_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tileset1x1_1/Tileset1x1_low_DefaultMaterial_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tileset1x1_1/Tileset1x1_low_DefaultMaterial_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tileset1x1_1/Tileset1x1_low_DefaultMaterial_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tileset1x1_1/Tileset1x1_low_DefaultMaterial_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tileset1x1_1/Tileset1x1_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset1x1/Tileset1x1_1/Tileset1x1_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset2/Tileset2_low_DefaultMaterial_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset2/Tileset2_low_DefaultMaterial_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset2/Tileset2_low_DefaultMaterial_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset2/Tileset2_low_DefaultMaterial_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset2/Tileset2_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset2/Tileset2_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset3/Tileset3_low_DefaultMaterial_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset3/Tileset3_low_DefaultMaterial_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset3/Tileset3_low_DefaultMaterial_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset3/Tileset3_low_DefaultMaterial_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset3/Tileset3_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/Tileset3/Tileset3_low_DefaultMaterial_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Balusters_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Balusters_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Balusters_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Balusters_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Balusters_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Balusters_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Base_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Base_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Base_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Base_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Base_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Base_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Rail_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Rail_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Rail_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Rail_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Rail_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Rail_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Step_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Step_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Step_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Step_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Step_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Step_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Wall_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Wall_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Wall_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Wall_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Wall_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner/T_Corner_Wall_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_base_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_base_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_base_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_base_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_base_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_base_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_step_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_step_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_step_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_step_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_step_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_step_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_wall_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_wall_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_wall_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_wall_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_wall_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_Corner_wall_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Balusters_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Balusters_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Balusters_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Balusters_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Balusters_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Balusters_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Rail_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Rail_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Rail_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Rail_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Rail_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCornerInner/TileCornerInner_low_M_Rail_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Balusters_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Balusters_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Balusters_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Balusters_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Balusters_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Balusters_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Base_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Base_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Base_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Base_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Base_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Base_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Rail_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Rail_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Rail_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Rail_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Rail_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Rail_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Step_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Step_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Step_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Step_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Step_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Step_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Wall_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Wall_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Wall_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Wall_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Wall_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_fixedlighting/T_Corner_Wall_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_base_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_base_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_base_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_base_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_base_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_base_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_step_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_step_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_step_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_step_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_step_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_step_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_wall_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_wall_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_wall_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_wall_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_wall_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_Corner_wall_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Balusters_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Balusters_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Balusters_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Balusters_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Balusters_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Balusters_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Rail_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Rail_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Rail_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Rail_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Rail_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetCorner_splotches/Tileset_Corner_low_M_Rail_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_base_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_base_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_base_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_base_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_base_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_base_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_step_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_step_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_step_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_step_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_step_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_step_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_wall_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_wall_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_wall_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_wall_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_wall_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_Corner_wall_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Balusters_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Balusters_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Balusters_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Balusters_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Balusters_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Balusters_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Rail_BaseColor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Rail_BaseColor.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Rail_Normal.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Rail_Normal.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Rail_OcclusionRoughnessMetallic.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/Materials/TilesetEdge/Tileset_Edge_low_M_Rail_OcclusionRoughnessMetallic.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Corner.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Corner.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Corner_railing.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Corner_railing.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Edge_2x2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Edge_2x2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Stairs.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Stairs.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Tile_3x2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Dungeon/SM_Tile_3x2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Actors/FadeActor/BP_FadeActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Actors/FadeActor/BP_FadeActor.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Actors/FadeActor/FA_Stairs.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Actors/FadeActor/FA_Stairs.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Actors/FadeActor/FA_Tile_3x3x2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Actors/FadeActor/FA_Tile_3x3x2.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Characters/Aura/BP_AuraCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Characters/Aura/BP_AuraCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/ProgressBar/WBP_BaseGlobeProgress.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/ProgressBar/WBP_BaseGlobeProgress.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/ProgressBar/WBP_HealthGlobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/ProgressBar/WBP_HealthGlobe.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/Dungeon.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Dungeon.umap" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,19 +30,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/Marketplace/Developer/RiderLink/Source/RD/src/rd_core_cpp/src/main/lifetime/Lifetime.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Private/Abilities/GameplayAbility.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Developer/TraceInsights/Private/Insights/Widgets/SFrameTrack.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Developer/TraceInsights/Private/Insights/Widgets/SFrameTrack.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Editor/BlueprintGraph/Classes/K2Node_ExecutionSequence.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Editor/MovieSceneTools/Private/Sections/BindingLifetimeSection.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Public/Math/TransformVectorized.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Public/Microsoft/MinimalWindowsApi.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Public/Templates/SharedPointer.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Private/PrimitiveComponentPhysics.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Public/DrawDebugHelpers.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/SlateCore/Public/Widgets/SWidget.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -188,10 +63,10 @@
         <option name="CONFIGURATION" value="DebugGame Editor" />
         <option name="PLATFORM" value="Win64" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXECUTABLE_PATH" value="D:\Softwares\Unreal\UE_5.4\Engine\Binaries\Win64\UnrealEditor-Win64-DebugGame.exe" />
+        <option name="EXECUTABLE_PATH" value="C:\Program Files\Epic Games\UE_5.4\Engine\Binaries\Win64\UnrealEditor-Win64-DebugGame.exe" />
         <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;C:\Aura-GameplayAbilitySystem\Aura.uproject&quot;" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="D:\Softwares\Unreal\UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="C:\Program Files\Epic Games\UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -204,7 +79,7 @@
         <option name="EXECUTABLE_PATH" value="C:\Aura-GameplayAbilitySystem\Binaries\Win64\Aura-Win64-DebugGame.exe" />
         <option name="MANDATORY_PROGRAM_PARAMETERS" value="" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="D:\Softwares\Unreal\UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="C:\Program Files\Epic Games\UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -214,10 +89,10 @@
         <option name="CONFIGURATION" value="Development Editor" />
         <option name="PLATFORM" value="Win64" />
         <option name="CURRENT_LAUNCH_PROFILE" value="Local" />
-        <option name="EXECUTABLE_PATH" value="D:\Softwares\Unreal\UE_5.4\Engine\Binaries\Win64\UnrealEditor.exe" />
+        <option name="EXECUTABLE_PATH" value="C:\Program Files\Epic Games\UE_5.4\Engine\Binaries\Win64\UnrealEditor.exe" />
         <option name="MANDATORY_PROGRAM_PARAMETERS" value=" &quot;C:\Aura-GameplayAbilitySystem\Aura.uproject&quot;" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="D:\Softwares\Unreal\UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="C:\Program Files\Epic Games\UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -230,7 +105,7 @@
         <option name="EXECUTABLE_PATH" value="C:\Aura-GameplayAbilitySystem\Binaries\Win64\Aura.exe" />
         <option name="MANDATORY_PROGRAM_PARAMETERS" value="" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="D:\Softwares\Unreal\UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="C:\Program Files\Epic Games\UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -243,7 +118,7 @@
         <option name="EXECUTABLE_PATH" value="C:\Aura-GameplayAbilitySystem\Binaries\Win64\Aura-Win64-Shipping.exe" />
         <option name="MANDATORY_PROGRAM_PARAMETERS" value="" />
         <option name="CUSTOM_PROGRAM_PARAMETERS" value="" />
-        <option name="WORKING_DIRECTORY" value="D:\Softwares\Unreal\UE_5.4" />
+        <option name="WORKING_DIRECTORY" value="C:\Program Files\Epic Games\UE_5.4" />
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="1" />
         <option name="TERMINAL_INTERACTION_BEHAVIOR" value="FORCE_CONSOLE" />
@@ -282,6 +157,9 @@
       <workItem from="1752133053759" duration="9792000" />
       <workItem from="1752215871826" duration="759000" />
       <workItem from="1752221407058" duration="2229000" />
+      <workItem from="1752312481471" duration="1422000" />
+      <workItem from="1752320560252" duration="1612000" />
+      <workItem from="1752336828748" duration="1916000" />
     </task>
     <servers />
   </component>

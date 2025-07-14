@@ -31,8 +31,8 @@ void UAuraAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf
 			GiveAbility(AbilitySpec);
 		}
 	}
-	AbilitiesGivenDelegate.Broadcast(this);
 	bStartupAbilitiesGiven = true;
+	AbilitiesGivenDelegate.Broadcast(this);
 }
 
 /**
@@ -80,6 +80,7 @@ void UAuraAbilitySystemComponent::AbilityInputTagReleased(const FGameplayTag& In
 /**
  * Executes a delegate for each ability in the ability system component
  * @param Delegate The delegate to execute for each ability
+ * Used for mapping the ability spells.
  */
 void UAuraAbilitySystemComponent::ForEachAbility(const FForEachAbility& Delegate)
 {
@@ -129,6 +130,17 @@ FGameplayTag UAuraAbilitySystemComponent::GetInputTagFromSpec(const FGameplayAbi
 		}
 	}
 	return FGameplayTag();
+}
+
+void UAuraAbilitySystemComponent::OnRep_ActivateAbilities()
+{
+	Super::OnRep_ActivateAbilities();
+
+	if (!bStartupAbilitiesGiven)
+	{
+		bStartupAbilitiesGiven = true;
+		AbilitiesGivenDelegate.Broadcast(this);
+	}
 }
 
 //Passes the tags of the GE to the widget via the delegate using the tag container.Used

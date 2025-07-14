@@ -3,6 +3,7 @@
 
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/Abilities/AuraGameplayAbility.h"
+#include "Aura/AuraLogChannels.h"
 
 void UAuraAbilitySystemComponent::AbilityActorInfo_OnSet()
 {
@@ -30,6 +31,8 @@ void UAuraAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf
 			GiveAbility(AbilitySpec);
 		}
 	}
+	AbilitiesGivenDelegate.Broadcast(this);
+	bStartupAbilitiesGiven = true;
 }
 
 /**
@@ -74,9 +77,63 @@ void UAuraAbilitySystemComponent::AbilityInputTagReleased(const FGameplayTag& In
 	}
 }
 
+/**
+ * Executes a delegate for each ability in the ability system component
+ * @param Delegate The delegate to execute for each ability
+ */
+void UAuraAbilitySystemComponent::ForEachAbility(const FForEachAbility& Delegate)
+{
+	FScopedAbilityListLock ActiveScopeLock(*this);
+	for (const FGameplayAbilitySpec& AbilitySpec : GetActivatableAbilities())
+	{
+		if (!Delegate.ExecuteIfBound(AbilitySpec))
+		{
+			UE_LOG(LogAura, Error, TEXT("Failed to execute delegate in %hs"), __FUNCTION__);
+		}
+	}
+}
+
+/**
+ * Gets the ability gameplay tag from an ability spec
+ * @param AbilitySpec The ability spec to get the tag from
+ * @return The ability's gameplay tag, or an empty tag if not found
+ */
+FGameplayTag UAuraAbilitySystemComponent::GetAbilityTagFromSpec(const FGameplayAbilitySpec& AbilitySpec)
+{
+	if (AbilitySpec.Ability)
+	{
+		// Iterate through each tag in the ability's tags to process them
+		for (FGameplayTag Tag : AbilitySpec.Ability.Get()->AbilityTags)
+		{
+			if (Tag.MatchesTag(FGameplayTag::RequestGameplayTag(FName("Abilities"))))
+			{
+				return Tag;
+			}
+		}
+	}
+	return FGameplayTag();
+}
+
+/**
+ * Gets the input gameplay tag from an ability spec's dynamic tags
+ * @param AbilitySpec The ability spec to get the input tag from
+ * @return The input gameplay tag, or an empty tag if not found
+ */
+FGameplayTag UAuraAbilitySystemComponent::GetInputTagFromSpec(const FGameplayAbilitySpec& AbilitySpec)
+{
+	for (FGameplayTag Tag : AbilitySpec.DynamicAbilityTags)
+	{
+		if (Tag.MatchesTag(FGameplayTag::RequestGameplayTag(FName("InputTag"))))
+		{
+			return Tag;
+		}
+	}
+	return FGameplayTag();
+}
+
 //Passes the tags of the GE to the widget via the delegate using the tag container.Used
 void UAuraAbilitySystemComponent::ClientEffectApplied_Implementation(UAbilitySystemComponent* AbilitySystemComponent,
-	const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle)
+							const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle)
 {
 	FGameplayTagContainer TagContainer;
 	EffectSpec.GetAllAssetTags(TagContainer);//Asset tag does not assign, it passes the tags.

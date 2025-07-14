@@ -3,7 +3,7 @@
 //Controller for Overlay Widgets.
 
 #include "UI/WidgetController/OverlayWidgetController.h"
-
+#include "AbilitySystem/Data/AbilityInfo.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 
@@ -54,21 +54,60 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 			}
 		);
 
-	//EffectAssetTags delegate gets called when the GE is applied to ASC in AuraASC.cpp.
-	Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda( 
-		[this](const FGameplayTagContainer& TagContainer)
+	if(UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(AbilitySystemComponent))
+	{
+		//If abilities given properly dont need to wait for the broadcast
+		if (AuraASC->bStartupAbilitiesGiven)
 		{
-			for (FGameplayTag Tag : TagContainer)
+			OnInitializeStartupAbilities(AuraASC);
+		}
+		//If abilities not given properly wait for the before broadcast wait until given.
+		else
+		{
+			AuraASC->AbilitiesGivenDelegate.AddUObject(this, &UOverlayWidgetController::OnInitializeStartupAbilities);
+		}
+		
+		//EffectAssetTags delegate gets called when the GE is applied to ASC in AuraASC.cpp.
+		AuraASC->EffectAssetTags.AddLambda( 
+			[this](const FGameplayTagContainer& TagContainer)
 			{
-				// "Message.1".MatchesTag("Message") will return True, "Message".MatchesTag("Message.1") will return False
-				const FGameplayTag MessageTag = FGameplayTag::RequestGameplayTag(TEXT("Message"));
-				if(Tag.MatchesTag(MessageTag))
+				for (FGameplayTag Tag : TagContainer)
 				{
-					//This is used to broadcast the data row that matches the tag to the Widgets.
-					const FUIWidgetRow* Row = GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable,Tag);
-					OnMessageWidgetDataChanged.Broadcast(*Row);
+					// "Message.1".MatchesTag("Message") will return True, "Message".MatchesTag("Message.1") will return False
+					const FGameplayTag MessageTag = FGameplayTag::RequestGameplayTag(TEXT("Message"));
+					if(Tag.MatchesTag(MessageTag))
+					{
+						//This is used to broadcast the data row that matches the tag to the Widgets.
+						const FUIWidgetRow* Row = GetDataTableRowByTag<FUIWidgetRow>(MessageWidgetDataTable,Tag);
+						OnMessageWidgetDataChanged.Broadcast(*Row);
+					}
 				}
 			}
-		}
-	);
+		);
+	}
+
+	
+}
+
+//Called when the startup abilities are given.
+void UOverlayWidgetController::OnInitializeStartupAbilities(UAuraAbilitySystemComponent* AuraAbilitySystemComponent)
+{
+	// Early return if startup abilities haven't been given yet
+	if (!AuraAbilitySystemComponent->bStartupAbilitiesGiven) return;
+
+	// Create delegate to process each ability
+	FForEachAbility BroadcastDelegate;
+	// Bind lambda to process each ability spec. Execute lamda.
+	BroadcastDelegate.BindLambda([this, AuraAbilitySystemComponent](const FGameplayAbilitySpec& AbilitySpec)
+	{
+		// Get the ability tag from the ability spec
+		FAuraAbilityInfo Info = AbilityInfo->FindAbilityInfoForTag(AuraAbilitySystemComponent->GetAbilityTagFromSpec(AbilitySpec));
+		// Set the input tag associated with this ability
+		Info.InputTag = AuraAbilitySystemComponent->GetInputTagFromSpec(AbilitySpec);
+		// Broadcast the ability info to update UI
+		AbilityInfoDelegate.Broadcast(Info);
+	});
+
+	// Iterate through all abilities and execute the delegate for each one
+	AuraAbilitySystemComponent->ForEachAbility(BroadcastDelegate);
 }

@@ -19,6 +19,9 @@ struct FAuraAbilityInfo
 	FGameplayTag InputTag = FGameplayTag();
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FGameplayTag CooldownTag = FGameplayTag();
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TObjectPtr<const UTexture2D> Icon = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
@@ -27,7 +30,9 @@ struct FAuraAbilityInfo
 };
 
 /**
- * 
+ * UAbilityInfo is a data asset class used for managing and retrieving ability information for spell UI.
+ * This class stores an array of ability information and provides functionality to retrieve specific ability information
+ * based on a gameplay tag.
  */
 UCLASS()
 class AURA_API UAbilityInfo : public UDataAsset

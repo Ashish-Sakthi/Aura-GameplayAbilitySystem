@@ -97,6 +97,23 @@ void UAuraAbilitySystemLibrary::GiveStartupAbilities(const UObject* WorldContext
 	}
 }
 
+// Returns the XP reward for a character of the specified class and level
+int32 UAuraAbilitySystemLibrary::GetXPRewardForClassAndLevel(const UObject* WorldContextObject,
+	ECharacterClass CharacterClass, int32 CharacterLevel)
+{
+	// Get the CharacterClassInfo Data Asset from the current GameMode
+	UCharacterClassInfo* CharacterClassInfo = GetCharacterClassInfo(WorldContextObject);
+	if (CharacterClassInfo == nullptr) return 0;
+
+	// Get the default info for the specified character class
+	const FCharacterClassDefaultInfo& Info = CharacterClassInfo->GetClassDefaultInfo(CharacterClass);
+	
+	// Get the XP reward value for the character's level from the scalable float curve
+	const float XPReward = Info.XPReward.GetValueAtLevel(CharacterLevel);
+
+	// Cast the float XP reward to an integer and return
+	return static_cast<int32>(XPReward);
+}
 
 // Returns the CharacterClassInfo Data Asset from the current GameMode
 UCharacterClassInfo* UAuraAbilitySystemLibrary::GetCharacterClassInfo(const UObject* WorldContextObject)

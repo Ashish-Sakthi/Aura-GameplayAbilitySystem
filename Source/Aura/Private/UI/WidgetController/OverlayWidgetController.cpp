@@ -6,6 +6,8 @@
 #include "AbilitySystem/Data/AbilityInfo.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
+#include "AbilitySystem/Data/LevelUpInfo.h"
+#include "Player/AuraPlayerState.h"
 
 //Constructed in AuraHUD.cpp
 
@@ -22,6 +24,9 @@ void UOverlayWidgetController::BroadcastInitialValues()
 
 void UOverlayWidgetController::BindCallbacksToDependencies()
 {
+	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
+	AuraPlayerState->OnXPChangedDelegate.AddUObject(this, &UOverlayWidgetController::OnXPChanged);
+	
 	const UAuraAttributeSet* AuraAttributeSet = CastChecked<UAuraAttributeSet>(AttributeSet);
 
 	//Delegate to update the values only when AttributeSet value changed to the widget.
@@ -110,4 +115,44 @@ void UOverlayWidgetController::OnInitializeStartupAbilities(UAuraAbilitySystemCo
 
 	// Iterate through all abilities and execute the delegate for each one
 	AuraAbilitySystemComponent->ForEachAbility(BroadcastDelegate);
+}
+
+void UOverlayWidgetController::OnXPChanged(int32 NewXP) const
+{
+	// Cast the PlayerState to AuraPlayerState and get the LevelUpInfo data table
+	const AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
+	const ULevelUpInfo* LevelUpInfo = AuraPlayerState->LevelUpInfo;
+	// Safety check to ensure LevelUpInfo is properly set in Blueprint
+	checkf(LevelUpInfo, TEXT("Unabled to find LevelUpInfo. Please fill out AuraPlayerState Blueprint"));
+
+	// Find the current level based on total XP and get the maximum possible level
+	const int32 Level = LevelUpInfo->FindLevelForXP(NewXP);
+	const int32 MaxLevel = LevelUpInfo->LevelUpInfos.Num();
+
+	// Make sure we're within the valid level range (not 0 or exceeding max level)
+	if (Level <= MaxLevel && Level > 0)
+	{
+    // Get the total XP required to reach the next level
+    const int32 LevelUpRequirement = LevelUpInfo->LevelUpInfos[Level].LevelUpRequirement;
+    // Get the total XP that was required to reach the current level
+    const int32 PreviousLevelUpRequirement = LevelUpInfo->LevelUpInfos[Level - 1].LevelUpRequirement;
+
+    // Calculate how much XP is needed to progress through the current level.
+    // Example: If Level 2 needs 1000 XP and Level 3 needs 2500 XP.
+    // DeltaLevelRequirement would be 1500 XP (2500-1000)
+    const int32 DeltaLevelRequirement = LevelUpRequirement - PreviousLevelUpRequirement;
+
+    // Calculate how much XP player has earned in the current level
+    // Example: If player has 1800 total XP and Level 2 started at 1000 XP
+    // XPForThisLevel would be 800 XP (1800-1000).
+    const int32 XPForThisLevel = NewXP - PreviousLevelUpRequirement;
+
+    // Convert the progress to a percentage (0.0 to 1.0)
+    // Example: 800 XP earned in a level that needs 1500 XP
+    // Would result in 0.533... (about 53.3% through the level)
+    const float XPBarPercent = static_cast<float>(XPForThisLevel) / static_cast<float>(DeltaLevelRequirement);
+
+    // Broadcast the percentage to update UI elements (like XP bar)
+    OnXPPercentChangedDelegate.Broadcast(XPBarPercent);
+	}
 }

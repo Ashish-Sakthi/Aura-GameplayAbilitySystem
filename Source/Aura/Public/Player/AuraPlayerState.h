@@ -9,7 +9,12 @@
 
 class UAttributeSet;
 /**
- * 
+ * @class AAuraPlayerState
+ * @brief Represents the player state in the Aura game, extending functionality with an Ability System Component and Attribute Set.
+ *
+ * This class manages the player state functionality, integrating Unreal's Ability System
+ * for gameplay attribute management and gameplay effect replication. It also handles
+ * player-specific information such as levels and attribute data.
  */
 UCLASS()
 class AURA_API AAuraPlayerState : public APlayerState,public IAbilitySystemInterface

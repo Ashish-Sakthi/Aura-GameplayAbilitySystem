@@ -58,8 +58,17 @@ using TStaticFuncPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateU
 // Can get fncn ptr of static fncn.
 
 /**
- * 
+ * @class UAuraAttributeSet
+ * @brief Represents the AttributeSet class for the game, managing gameplay attributes and their replication.
+ *
+ * The UAuraAttributeSet class is responsible for defining and handling various gameplay attributes such as primary,
+ * secondary, resistance, and vital attributes. It includes support for handling attribute replication, clamping ranges
+ * using PreAttributeChange, and post-effect adjustments using PostGameplayEffectExecute.
+ *
+ * The class also provides the ability to map gameplay tags to attributes, and it implements mechanisms for the
+ * server-side processing of meta-attributes like IncomingDamage.
  */
+
 UCLASS()
 class AURA_API UAuraAttributeSet : public UAttributeSet
 {

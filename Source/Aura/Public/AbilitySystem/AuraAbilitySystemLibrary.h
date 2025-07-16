@@ -11,12 +11,12 @@ struct FGameplayEffectContextHandle;
 class UAbilitySystemComponent;
 class UAttributeInfoWidgetController;
 class UOverlayWidgetController;
+
 /**
- * UAuraAbilitySystemLibrary is a static function library designed to provide convenient access
- * to various gameplay-related widget controllers, such as the overlay widget controller and
- * attribute info widget controller. It simplifies the process of retrieving and managing
- * UI-related elements within the Aura game framework.
+ * A utility class providing various static methods associated with the ability system in the Aura framework.
+ * Contains helper functions specific to widget controllers, character class defaults, gameplay effects, and gameplay mechanics.
  */
+
 UCLASS()
 class AURA_API UAuraAbilitySystemLibrary : public UBlueprintFunctionLibrary
 {

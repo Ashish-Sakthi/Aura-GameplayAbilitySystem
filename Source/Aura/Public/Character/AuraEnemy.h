@@ -13,7 +13,11 @@ class UWidgetComponent;
 class UBehaviorTree;
 class AAuraAIController;
 /**
- * 
+ * @class AAuraEnemy
+ * @brief Represents an enemy character in the game, extending base character functionality with combat and AI-specific features.
+ *
+ * AAuraEnemy inherits from AAuraCharacterBase and implements the IEnemyInterface to provide enemy-specific behaviors.
+ * This class includes functionality for AI behavior, combat-related mechanics, and interaction with gameplay tags.
  */
 UCLASS()
 class AURA_API AAuraEnemy : public AAuraCharacterBase, public IEnemyInterface

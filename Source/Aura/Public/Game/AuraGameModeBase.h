@@ -9,7 +9,11 @@
 class UCharacterClassInfo;
 
 /**
- * 
+ * @class AAuraGameModeBase
+ * @brief The base game mode class for the Aura project.
+ *
+ * This class serves as the foundation for defining game rules, logic, and gameplay elements specific to the Aura project.
+ * It extends the AGameModeBase and provides an interface to access character class information.
  */
 UCLASS()
 class AURA_API AAuraGameModeBase : public AGameModeBase

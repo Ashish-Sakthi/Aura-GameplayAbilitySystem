@@ -11,6 +11,13 @@ class UNiagaraSystem;
 class USphereComponent;
 class UProjectileMovementComponent;
 
+/**
+ * AAuraProjectile
+ * 
+ * A projectile actor class used in spells and abilities.
+ * Handles movement, collision detection, and applying gameplay effects on impact.
+ * Can be spawned and configured with damage effects through gameplay abilities.
+ */
 UCLASS()
 class AURA_API AAuraProjectile : public AActor
 {

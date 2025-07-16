@@ -16,7 +16,11 @@ class UInputAction;
 class USplineComponent;
 struct FInputActionValue;
 
-
+/**
+ * @class AAuraPlayerController
+ * @brief Represents the Player Controller for the Aura game. Manages input handling, player movement,
+ *        abilities, and interactions with other game elements.
+ */
 UCLASS()
 class AURA_API AAuraPlayerController : public APlayerController
 {

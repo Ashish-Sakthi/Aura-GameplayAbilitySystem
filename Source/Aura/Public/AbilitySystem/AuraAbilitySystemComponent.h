@@ -13,7 +13,12 @@ DECLARE_MULTICAST_DELEGATE_OneParam(FAbilitiesGiven, UAuraAbilitySystemComponent
 DECLARE_DELEGATE_OneParam(FForEachAbility,const FGameplayAbilitySpec&)
 
 /**
- * 
+ * @class UAuraAbilitySystemComponent
+ * @brief Custom implementation of the ability system component to handle Aura-specific gameplay functionality.
+ *
+ * UAuraAbilitySystemComponent extends the base Unreal Engine UAbilitySystemComponent by integrating
+ * additional functionality that is tailored for the Aura project's gameplay framework. This involves managing
+ * character abilities, effects, and gameplay-related tags.
  */
 UCLASS()
 class AURA_API UAuraAbilitySystemComponent : public UAbilitySystemComponent

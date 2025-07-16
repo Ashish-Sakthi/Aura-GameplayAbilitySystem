@@ -10,8 +10,11 @@
 struct FGameplayAttribute;
 //Sends the struct data to the attribute menu.
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAttributeInfoSignature,const FAuraAttributeInfo&,Info );
+
 /**
- * 
+ * UAttributeInfoWidgetController is responsible for managing and broadcasting attribute-related information
+ * to the UI widgets. It extends the functionality of UAuraWidgetController and works closely with attribute
+ * data and gameplay systems.
  */
 UCLASS(BlueprintType,Blueprintable)
 class AURA_API UAttributeInfoWidgetController : public UAuraWidgetController

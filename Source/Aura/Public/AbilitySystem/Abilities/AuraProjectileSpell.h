@@ -11,7 +11,11 @@ class UGameplayEffect;
 struct FGameplayTag;
 
 /**
- * 
+ * @class UAuraProjectileSpell
+ * @brief A gameplay ability class for handling projectile-based spells in the Aura system.
+ *
+ * This class is responsible for activating and managing projectile-based gameplay abilities. It inherits
+ * from UAuraDamageGameplayAbility and provides functionality to spawn and control projectiles during gameplay.
  */
 UCLASS()
 class AURA_API UAuraProjectileSpell : public UAuraDamageGameplayAbility

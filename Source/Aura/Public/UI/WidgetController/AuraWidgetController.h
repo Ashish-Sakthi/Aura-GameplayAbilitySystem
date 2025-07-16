@@ -31,7 +31,13 @@ struct FWidgetControllerParams  // 'F' prefix is Unreal's naming convention for 
 };
 
 /**
- * 
+ * @class UAuraWidgetController
+ * @brief A base class responsible for managing widget-specific logic and ensuring communication
+ * between widgets and gameplay-related systems like the PlayerController, PlayerState,
+ * AbilitySystemComponent, and AttributeSet.
+ *
+ * This class serves as the parent for widget controllers that handle initialization,
+ * data broadcasting, and binding callbacks to game-related dependencies.
  */
 UCLASS()
 class AURA_API UAuraWidgetController : public UObject

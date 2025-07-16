@@ -16,6 +16,10 @@ class UAttributeSet;
 class UAnimMontage;
 class UAbilitySystemComponent;
 
+/*
+ * Base character class for Aura game. Contains core functionality for both player and enemy characters
+ * including ability system integration, combat mechanics, and character attributes.
+ */
 UCLASS(Abstract)
 class AURA_API AAuraCharacterBase : public ACharacter,public IAbilitySystemInterface,public ICombatInterface
 {

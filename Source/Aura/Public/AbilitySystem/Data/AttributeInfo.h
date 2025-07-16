@@ -29,7 +29,8 @@ struct FAuraAttributeInfo
 };
 
 /**
- * 
+ * UAttributeInfo is a data asset that manages an array of attribute information structures.
+ * This class allows for storage and retrieval of attribute-related data by utilizing gameplay tags.
  */
 UCLASS()
 class AURA_API UAttributeInfo : public UDataAsset

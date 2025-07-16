@@ -7,7 +7,8 @@
 #include "AuraUserWidget.generated.h"
 
 /**
- * 
+ * UAuraUserWidget is a specialized user widget class that extends UUserWidget,
+ * providing additional functionality to interface with a Widget Controller.
  */
 UCLASS()
 class AURA_API UAuraUserWidget : public UUserWidget

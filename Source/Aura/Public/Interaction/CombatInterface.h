@@ -36,10 +36,10 @@ class UCombatInterface : public UInterface
 };
 
 /**
- * The ICombatInterface class provides a set of combat-related functions and properties
- * that can be implemented by any class inheriting this interface. This includes methods
- * to retrieve player combat attributes, animations, and state information, as well as
- * to interact with other components in a combat system.
+ * @class ICombatInterface
+ * @brief An interface that defines core combat-related functionalities for implementing classes.
+ *
+ * This interface outlines a set of methods and functionalities that any inheriting class must or may implement to support combat-related mechanics.
  */
 class AURA_API ICombatInterface
 {

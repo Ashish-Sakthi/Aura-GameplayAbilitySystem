@@ -7,7 +7,9 @@
 #include "AuraSummonAbility.generated.h"
 
 /**
- * 
+ * UAuraSummonAbility is a subclass of UAuraGameplayAbility that provides functionality
+ * for summoning minions in the Aura game. This class determines the number of minions,
+ * their spawn locations, and their types.
  */
 UCLASS()
 class AURA_API UAuraSummonAbility : public UAuraGameplayAbility

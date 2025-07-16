@@ -26,6 +26,19 @@ enum class EEffectRemovalPolicy : uint8
 	DoNotRemove
 };
 
+/**
+ * AAuraEffectActor is a class designed to apply various gameplay effects to actors that interact with it.
+ * It supports different types of effects (Instant, Duration, Infinite) with configurable application
+ * and removal policies. Effects can be applied on overlap begin/end and can target specific actor types.
+ *
+ * Key features:
+ * - Configurable effect application policies
+ * - Support for instant, duration and infinite gameplay effects
+ * - Effect removal policies for infinite effects
+ * - Optional destruction on effect application
+ * - Filtering for enemy-only effect application
+ */
+
 UCLASS()
 class AURA_API AAuraEffectActor : public AActor
 {

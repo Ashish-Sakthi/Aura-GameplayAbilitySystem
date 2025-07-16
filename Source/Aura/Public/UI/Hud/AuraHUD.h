@@ -13,7 +13,9 @@ class UAttributeSet;
 class UAuraUserWidget;
 struct FWidgetControllerParams;
 /**
- * 
+ * AAuraHUD is responsible for managing the Head-Up Display (HUD) in the Aura game.
+ * This includes initializing overlay UI elements and widget controllers to handle
+ * user interface functionality related to attributes and gameplay information.
  */
 UCLASS()
 class AURA_API AAuraHUD : public AHUD

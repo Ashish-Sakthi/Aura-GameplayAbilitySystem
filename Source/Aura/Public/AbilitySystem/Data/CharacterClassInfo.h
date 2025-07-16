@@ -31,7 +31,8 @@ struct FCharacterClassDefaultInfo
 
 
 /**
- * 
+ * UCharacterClassInfo is a data asset that contains configuration and information
+ * for various character classes in the game, as well as shared common defaults.
  */
 UCLASS()
 class AURA_API UCharacterClassInfo : public UDataAsset

@@ -14,7 +14,9 @@ class UAbilitySystemComponent;
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FCooldownChangeSignature, float, TimeRemaining);
 
 /**
- * 
+ * UWaitCooldownChange is a BlueprintAsyncActionBase-derived class used to monitor changes to cooldowns
+ * associated with specific gameplay tags in relation to an Ability System Component.
+ * This class allows tracking when a cooldown starts or ends by broadcasting the respective events.
  */
 UCLASS(BlueprintType, meta = (ExposedAsyncProxy = "AsyncTask"))
 class AURA_API UWaitCooldownChange : public UBlueprintAsyncActionBase

@@ -33,6 +33,8 @@ struct FUIWidgetRow : public FTableRowBase
 //Delegate that broadcasts the attribute changes to the UI.
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAttributeChangedSignature, float, NewValue);
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPlayerStatChangedSignature, int, NewValue);
+
 //Delegate that broadcasts the data for the message widget.
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMessageWidgetDataSignature, FUIWidgetRow, MessageWidgetRow);
 
@@ -67,15 +69,18 @@ public:
 
 	UPROPERTY(BlueprintAssignable,Category = "GAS|Attributes")
 	FOnAttributeChangedSignature OnMaxManaChanged;
-
-	UPROPERTY(BlueprintAssignable,Category = "GAS|XP")
-	FOnAttributeChangedSignature OnXPPercentChangedDelegate;
 	
 	UPROPERTY(BlueprintAssignable,Category = "GAS|Message")
 	FMessageWidgetDataSignature OnMessageWidgetDataChanged;
 
 	UPROPERTY(BlueprintAssignable, Category="GAS|Messages")
 	FAbilityInfoSignature AbilityInfoDelegate;
+
+	UPROPERTY(BlueprintAssignable,Category = "GAS|XP")
+	FOnAttributeChangedSignature OnXPPercentChangedDelegate;
+
+	UPROPERTY(BlueprintAssignable,Category = "GAS|Level")
+	FOnPlayerStatChangedSignature OnPlayerLevelChangedDelegate;
 
 protected:
 	

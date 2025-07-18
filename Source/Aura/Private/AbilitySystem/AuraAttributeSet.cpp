@@ -132,21 +132,41 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 			const int32 NumLevelUps = NewLevel - CurrentLevel;
 			if (NumLevelUps > 0)
 			{
+				//Adds the player level and attribute points according to the player level. Checks the DA.
 				const int32 AttributePointsReward = IPlayerInterface::Execute_GetAttributePointsReward(Props.SourceCharacter, CurrentLevel);
 				const int32 SpellPointsReward = IPlayerInterface::Execute_GetSpellPointsReward(Props.SourceCharacter, CurrentLevel);
-				
+
 				IPlayerInterface::Execute_AddToPlayerLevel(Props.SourceCharacter, NumLevelUps);
 				IPlayerInterface::Execute_AddToAttributePoints(Props.SourceCharacter, AttributePointsReward);
 				IPlayerInterface::Execute_AddToSpellPoints(Props.SourceCharacter, SpellPointsReward);
 	
-				SetHealth(GetMaxHealth());
-				SetMana(GetMaxMana());
-				
+				bTopOffHealth = true;
+				bTopOffMana = true;
+
+				//Spawn the effects when leveling up.
 				IPlayerInterface::Execute_LevelUp(Props.SourceCharacter);
 			}
 			
 			IPlayerInterface::Execute_AddToXP(Props.SourceCharacter, LocalIncomingXP);
 		}
+	}
+}
+
+//Called after an attribute value changes.
+//Used to set the health and mana to 100% of the new max value. Instead of old value. 
+void UAuraAttributeSet::PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue)
+{
+	Super::PostAttributeChange(Attribute, OldValue, NewValue);
+
+	if (Attribute == GetMaxHealthAttribute() && bTopOffHealth)
+	{
+		SetHealth(GetMaxHealth());
+		bTopOffHealth = false;
+	}
+	if (Attribute == GetMaxManaAttribute() && bTopOffMana)
+	{
+		SetMana(GetMaxMana());
+		bTopOffMana = false;
 	}
 }
 

@@ -83,6 +83,8 @@ public:
 	//Use PostAttributeChange to modify the value of an attribute after it is changed.
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 
+	virtual void PostAttributeChange(const FGameplayAttribute& Attribute, float OldValue, float NewValue) override;
+
 	//This map is used to get the attribute from the tag.
 	TMap<FGameplayTag, TStaticFuncPtr<FGameplayAttribute()>> TagsToAttributes;
 
@@ -261,4 +263,7 @@ private:
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;
 	void ShowFloatingText(const FEffectProperties& Props,float Damage,bool bBlockedHit,bool bCriticalHit) const;
 	void SendXPEvent(const FEffectProperties& Props);
+
+	bool bTopOffHealth = false;
+	bool bTopOffMana = false;
 };

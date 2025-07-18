@@ -2,8 +2,13 @@
 
 
 #include "UI/WidgetController/AttributeInfoWidgetController.h"
+
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "AbilitySystem/Data/AttributeInfo.h"
+#include "Player/AuraPlayerState.h"
+
+class AAuraPlayerState;
 
 void UAttributeInfoWidgetController::BroadcastInitialValues()
 {
@@ -15,6 +20,9 @@ void UAttributeInfoWidgetController::BroadcastInitialValues()
 	{
 		BroadcastAttributeInfo(Pair.Key,Pair.Value());
 	}
+	
+	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
+	AttributePointsChangedDelegate.Broadcast(AuraPlayerState->GetAttributePoints());
 }
 
 //Live Updates the attribute info widgets.
@@ -33,6 +41,20 @@ void UAttributeInfoWidgetController::BindCallbacksToDependencies()
 				}
 		);
 	}
+
+	AAuraPlayerState* AuraPlayerState = CastChecked<AAuraPlayerState>(PlayerState);
+	AuraPlayerState->OnAttributePointsChangedDelegate.AddLambda(
+		[this](int32 Points)
+		{
+			AttributePointsChangedDelegate.Broadcast(Points);
+		}
+		);
+}
+
+void UAttributeInfoWidgetController::UpgradeAttribute(const FGameplayTag& AttributeTag)
+{
+	UAuraAbilitySystemComponent* AuraASC = CastChecked<UAuraAbilitySystemComponent>(AbilitySystemComponent);
+	AuraASC->UpgradeAttribute(AttributeTag);
 }
 
 //Gets the key and value of the map and broadcasts the attribute info to the widgets.

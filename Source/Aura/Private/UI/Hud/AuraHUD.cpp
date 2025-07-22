@@ -11,6 +11,7 @@
 #include "UI/Widget/AuraUserWidget.h"
 #include "UI/WidgetController/AttributeInfoWidgetController.h"
 #include "UI/WidgetController/OverlayWidgetController.h"
+#include "UI/WidgetController/SpellMenuWidgetController.h"
 
 //Creates the controller and returns it.
 UOverlayWidgetController* AAuraHUD::GetOverlayWidgetController(const FWidgetControllerParams& WCParams)
@@ -34,6 +35,17 @@ UAttributeInfoWidgetController* AAuraHUD::GetAttributeInfoWidgetController(const
 		AttributeInfoWidgetController->BindCallbacksToDependencies();
 	}
 	return AttributeInfoWidgetController;
+}
+
+USpellMenuWidgetController* AAuraHUD::GetSpellMenuWidgetController(const FWidgetControllerParams& WCParams)
+{
+	if (SpellMenuWidgetController == nullptr)
+	{
+		SpellMenuWidgetController = NewObject<USpellMenuWidgetController>(this, SpellMenuWidgetControllerClass);
+		SpellMenuWidgetController->SetWidgetControllerParams(WCParams);
+		SpellMenuWidgetController->BindCallbacksToDependencies();
+	}
+	return SpellMenuWidgetController;
 }
 
 //Called after initializing valid values for PC, PS, ASC, AS in AuraCharacter.cpp

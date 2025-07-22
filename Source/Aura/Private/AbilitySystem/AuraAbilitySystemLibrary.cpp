@@ -12,20 +12,40 @@
 #include "Player/AuraPlayerState.h"
 #include "UI/Hud/AuraHUD.h"
 
+bool UAuraAbilitySystemLibrary::MakeWidgetControllerParams(const UObject* WorldContextObject,
+	FWidgetControllerParams& OutWCParams, AAuraHUD*& OutAuraHUD)
+{
+	// Get the player controller from the world context
+	if (APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject, 0))
+	{
+		// Cast the HUD to AuraHUD type
+		OutAuraHUD = Cast<AAuraHUD>(PC->GetHUD());
+		if (OutAuraHUD)
+		{
+			// Get player state and ability system components
+			AAuraPlayerState* PS = PC->GetPlayerState<AAuraPlayerState>();
+			UAbilitySystemComponent* ASC = PS->GetAbilitySystemComponent();
+			UAttributeSet* AS = PS->GetAttributeSet();
+
+			// Set up widget controller parameters with required components
+			OutWCParams.AttributeSet = AS;
+			OutWCParams.AbilitySystemComponent = ASC;
+			OutWCParams.PlayerState = PS;
+			OutWCParams.PlayerController = PC;
+			return true;
+		}
+	}
+	return false;
+}
+
 //Creates a Function that is blueprint pure and static.
 UOverlayWidgetController* UAuraAbilitySystemLibrary::GetOverlayWidgetController(const UObject* WorldContextObject)
 {
-	//Getting the Local Player Controller
-	if(APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject,0))
+	FWidgetControllerParams WCParams;
+	AAuraHUD* AuraHUD = nullptr;
+	if (MakeWidgetControllerParams(WorldContextObject, WCParams, AuraHUD))
 	{
-		if (AAuraHUD* AuraHud = Cast<AAuraHUD>(PC->GetHUD()))
-		{
-			AAuraPlayerState* PS = Cast<AAuraPlayerState>(PC->PlayerState);
-			UAbilitySystemComponent* ASC = PS->GetAbilitySystemComponent();
-			UAttributeSet* AS = PS->GetAttributeSet();
-			const FWidgetControllerParams WidgetControllerParams(PC,PS,ASC,AS);
-			return AuraHud->GetOverlayWidgetController(WidgetControllerParams);//Creates the widget controller if not created.
-		}
+		return AuraHUD->GetOverlayWidgetController(WCParams);
 	}
 	return nullptr;
 }
@@ -33,17 +53,22 @@ UOverlayWidgetController* UAuraAbilitySystemLibrary::GetOverlayWidgetController(
 UAttributeInfoWidgetController* UAuraAbilitySystemLibrary::GetAttributeInfoWidgetController(
 	const UObject* WorldContextObject)
 {
-	//Getting the Local Player Controller
-	if(APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject,0))
+	FWidgetControllerParams WCParams;
+	AAuraHUD* AuraHUD = nullptr;
+	if (MakeWidgetControllerParams(WorldContextObject, WCParams, AuraHUD))
 	{
-		if (AAuraHUD* AuraHud = Cast<AAuraHUD>(PC->GetHUD()))
-		{
-			AAuraPlayerState* PS = Cast<AAuraPlayerState>(PC->PlayerState);
-			UAbilitySystemComponent* ASC = PS->GetAbilitySystemComponent();
-			UAttributeSet* AS = PS->GetAttributeSet();
-			const FWidgetControllerParams WidgetControllerParams(PC,PS,ASC,AS);
-			return AuraHud->GetAttributeInfoWidgetController(WidgetControllerParams);//Creates the widget controller if not created.
-		}
+		return AuraHUD->GetAttributeInfoWidgetController(WCParams);
+	}
+	return nullptr;
+}
+
+USpellMenuWidgetController* UAuraAbilitySystemLibrary::GetSpellMenuWidgetController(const UObject* WorldContextObject)
+{
+	FWidgetControllerParams WCParams;
+	AAuraHUD* AuraHUD = nullptr;
+	if (MakeWidgetControllerParams(WorldContextObject, WCParams, AuraHUD))
+	{
+		return AuraHUD->GetSpellMenuWidgetController(WCParams);
 	}
 	return nullptr;
 }

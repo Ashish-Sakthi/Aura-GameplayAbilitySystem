@@ -31,6 +31,7 @@ void UAuraWidgetController::BroadcastInitialValues()
 
 void UAuraWidgetController::BindCallbacksToDependencies()
 {
+	
 }
 
 void UAuraWidgetController::BroadcastAbilityInfo()
@@ -45,8 +46,9 @@ void UAuraWidgetController::BroadcastAbilityInfo()
 	{
 		// Get the ability tag from the ability spec
 		FAuraAbilityInfo Info = AbilityInfo->FindAbilityInfoForTag(AuraAbilitySystemComponent->GetAbilityTagFromSpec(AbilitySpec));
-		// Set the input tag associated with this ability
+		// Set the input tag and the status tag associated with this ability
 		Info.InputTag = AuraAbilitySystemComponent->GetInputTagFromSpec(AbilitySpec);
+		Info.StatusTag = AuraAbilitySystemComponent->GetStatusFromSpec(AbilitySpec);
 		// Broadcast the ability info to update UI
 		AbilityInfoDelegate.Broadcast(Info);
 	});

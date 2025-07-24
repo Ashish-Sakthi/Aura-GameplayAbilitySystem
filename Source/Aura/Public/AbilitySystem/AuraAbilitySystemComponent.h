@@ -11,7 +11,7 @@ DECLARE_MULTICAST_DELEGATE_OneParam(FEffectAssetTags,const FGameplayTagContainer
 DECLARE_MULTICAST_DELEGATE(FAbilitiesGiven)
 /* Delegate used to iterate through gameplay abilities, taking a single FGameplayAbilitySpec parameter */
 DECLARE_DELEGATE_OneParam(FForEachAbility,const FGameplayAbilitySpec&)
-DECLARE_MULTICAST_DELEGATE_TwoParams(FAbilityStatusChanged, const FGameplayTag& /*AbilityTag*/, const FGameplayTag& /*StatusTag*/)
+DECLARE_MULTICAST_DELEGATE_ThreeParams(FAbilityStatusChanged, const FGameplayTag& /*AbilityTag*/, const FGameplayTag& /*StatusTag*/, int32 /*AbilityLevel*/);
 
 /**
  * @class UAuraAbilitySystemComponent
@@ -54,6 +54,9 @@ public:
 	void ServerUpgradeAttribute(const FGameplayTag& AttributeTag);
 	
 	void UpdateAbilityStatuses(int32 Level);
+
+	UFUNCTION(Server, Reliable)
+	void ServerSpendSpellPoint(const FGameplayTag& AbilityTag);
 	
 protected:
 
@@ -68,5 +71,5 @@ protected:
 	virtual void OnRep_ActivateAbilities() override;
 
 	UFUNCTION(Client, Reliable)
-	void ClientUpdateAbilityStatus(const FGameplayTag& AbilityTag, const FGameplayTag& StatusTag);
+	void ClientUpdateAbilityStatus(const FGameplayTag& AbilityTag, const FGameplayTag& StatusTag, int32 AbilityLevel);
 };

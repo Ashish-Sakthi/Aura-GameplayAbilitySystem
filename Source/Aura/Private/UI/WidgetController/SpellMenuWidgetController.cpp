@@ -35,7 +35,10 @@ void USpellMenuWidgetController::BindCallbacksToDependencies()
           ShouldEnableButtons(StatusTag, CurrentSpellPoints, bEnableSpendPoints, bEnableEquip);
 
           // Broadcast updated button states
-          SpellGlobeSelectedDelegate.Broadcast(bEnableSpendPoints, bEnableEquip);
+          FString Description;
+          FString NextLevelDescription;
+          GetAuraASC()->GetDescriptionsByAbilityTag(AbilityTag, Description, NextLevelDescription);
+          SpellGlobeSelectedDelegate.Broadcast(bEnableSpendPoints, bEnableEquip, Description, NextLevelDescription);
        }
        
        // If ability info is available, update and broadcast new info to UI
@@ -59,7 +62,10 @@ void USpellMenuWidgetController::BindCallbacksToDependencies()
 
           // Update button enable states based on current selected ability status and new spell points
           ShouldEnableButtons(SelectedAbility.Status, CurrentSpellPoints, bEnableSpendPoints, bEnableEquip);
-          SpellGlobeSelectedDelegate.Broadcast(bEnableSpendPoints, bEnableEquip);
+          FString Description;
+          FString NextLevelDescription;
+          GetAuraASC()->GetDescriptionsByAbilityTag(SelectedAbility.Ability, Description, NextLevelDescription);
+          SpellGlobeSelectedDelegate.Broadcast(bEnableSpendPoints, bEnableEquip, Description, NextLevelDescription);
        });
 }
 
@@ -99,7 +105,10 @@ void USpellMenuWidgetController::SpellGlobeSelected(const FGameplayTag& AbilityT
     ShouldEnableButtons(AbilityStatus, SpellPoints, bEnableSpendPoints, bEnableEquip);
 
     // Notify UI about enabled buttons for the selected ability
-    SpellGlobeSelectedDelegate.Broadcast(bEnableSpendPoints, bEnableEquip);
+    FString Description;
+    FString NextLevelDescription;
+    GetAuraASC()->GetDescriptionsByAbilityTag(AbilityTag, Description, NextLevelDescription);
+    SpellGlobeSelectedDelegate.Broadcast(bEnableSpendPoints, bEnableEquip, Description, NextLevelDescription);
 }
 
 // Called when the spend point button is pressed; sends server command to spend spell point on selected ability
@@ -110,6 +119,13 @@ void USpellMenuWidgetController::SpendPointButtonPressed()
        // Requests server to spend a spell point for the currently selected ability
        GetAuraASC()->ServerSpendSpellPoint(SelectedAbility.Ability);
     }
+}
+
+void USpellMenuWidgetController::GlobeDeselect()
+{
+   SelectedAbility.Ability = FAuraGameplayTags::Get().Abilities_None;
+   SelectedAbility.Status = FAuraGameplayTags::Get().Abilities_Status_Locked;
+   SpellGlobeSelectedDelegate.Broadcast(false, false, FString(), FString());
 }
 
 // Determines whether the Spend Points and Equip buttons should be enabled based on ability status and spell points

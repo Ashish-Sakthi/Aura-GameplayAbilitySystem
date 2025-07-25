@@ -229,6 +229,33 @@ void UAuraAbilitySystemComponent::UpdateAbilityStatuses(int32 Level)
     }
 }
 
+bool UAuraAbilitySystemComponent::GetDescriptionsByAbilityTag(const FGameplayTag& AbilityTag, FString& OutDescription,
+   FString& OutNextLevelDescription)
+{
+   if (const FGameplayAbilitySpec* AbilitySpec = GetSpecFromAbilityTag(AbilityTag))
+   {
+      if(UAuraGameplayAbility* AuraAbility = Cast<UAuraGameplayAbility>(AbilitySpec->Ability))
+      {
+         OutDescription = AuraAbility->GetDescription(AbilitySpec->Level);
+         OutNextLevelDescription = AuraAbility->GetNextLevelDescription(AbilitySpec->Level + 1);
+         return true;
+      }
+   }
+
+   // If no ability spec found (Ability Locked), return default description for the ability tag if locked selected else return nothing.
+   const UAbilityInfo* AbilityInfo = UAuraAbilitySystemLibrary::GetAbilityInfo(GetAvatarActor());
+   if (!AbilityTag.IsValid() || AbilityTag.MatchesTagExact(FAuraGameplayTags::Get().Abilities_None))
+   {
+      OutDescription = FString();
+   }
+   else
+   {
+      OutDescription = UAuraGameplayAbility::GetLockedDescription(AbilityInfo->FindAbilityInfoForTag(AbilityTag).LevelRequirement);
+   }
+   OutNextLevelDescription = FString();
+   return false;
+}
+
 // Server RPC implementation to spend a spell point on a specific ability identified by its tag
 void UAuraAbilitySystemComponent::ServerSpendSpellPoint_Implementation(const FGameplayTag& AbilityTag)
 {

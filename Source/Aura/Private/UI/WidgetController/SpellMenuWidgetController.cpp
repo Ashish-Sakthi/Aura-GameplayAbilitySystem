@@ -190,6 +190,8 @@ void USpellMenuWidgetController::OnAbilityEquipped(const FGameplayTag& AbilityTa
 
    // Instruct UI to stop showing "waiting for equip"
    StopWaitingForEquipDelegate.Broadcast(AbilityInfo->FindAbilityInfoForTag(AbilityTag).AbilityType);
+   SpellGlobeReassignedDelegate.Broadcast(AbilityTag);
+   GlobeDeselect();
 }
 
 // Decides if the Spend Points and Equip buttons should be enabled for a given ability state and spell point count

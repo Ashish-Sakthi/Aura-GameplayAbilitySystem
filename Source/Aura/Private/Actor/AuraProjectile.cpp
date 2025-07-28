@@ -46,13 +46,8 @@ void AAuraProjectile::BeginPlay()
 //On the client Sound and Effect will be played before destorying, if not played already.
 void AAuraProjectile::Destroyed()
 {
-	if (!bHit && !HasAuthority())
-	{
-		UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation(), FRotator::ZeroRotator);
-		UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, ImpactEffect, GetActorLocation());
-		if (LoopingSoundComponent) LoopingSoundComponent->Stop();
-		bHit = true;
-	}
+	if (!bHit && !HasAuthority()) OnHit();
+	
 	Super::Destroyed();
 }
 
@@ -66,34 +61,29 @@ void AAuraProjectile::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, 
                                       UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	//If same actor is overlapped do nothing.
-	if (!DamageHandle.Data.IsValid() || DamageHandle.Data.Get()->GetContext().GetEffectCauser() == OtherActor)
-	{
-		return;
-	}
-	if (!UAuraAbilitySystemLibrary::IsNotFriend(DamageHandle.Data.Get()->GetContext().GetEffectCauser(), OtherActor))
-	{
-		return;
-	}
-	if (!bHit)
-	{
-		UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation(), FRotator::ZeroRotator);
-		UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, ImpactEffect, GetActorLocation());
-		if (LoopingSoundComponent) LoopingSoundComponent->Stop();
-		bHit = true;
-	}
+	AActor* SourceAvatarActor = DamageEffectParams.SourceAbilitySystemComponent->GetAvatarActor();
+	if (SourceAvatarActor == OtherActor) return;
+	if (!UAuraAbilitySystemLibrary::IsNotFriend(SourceAvatarActor, OtherActor)) return;
+	if (!bHit) OnHit();
 
 	if (HasAuthority())
 	{
 		//Apply the effect on the server because the AS will be replicated so the client will receive the changes.
 		if (UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(OtherActor))
 		{
-			TargetASC->ApplyGameplayEffectSpecToSelf(*DamageHandle.Data.Get());
+			DamageEffectParams.TargetAbilitySystemComponent = TargetASC;
+			UAuraAbilitySystemLibrary::ApplyDamageEffect(DamageEffectParams);
 		}
 		
 		Destroy();
 	}
-	else
-	{
-		bHit = true;
-	}
+	else bHit = true;
+}
+
+void AAuraProjectile::OnHit()
+{
+	UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation(), FRotator::ZeroRotator);
+	UNiagaraFunctionLibrary::SpawnSystemAtLocation(this, ImpactEffect, GetActorLocation());
+	if (LoopingSoundComponent) LoopingSoundComponent->Stop();
+	bHit = true;
 }

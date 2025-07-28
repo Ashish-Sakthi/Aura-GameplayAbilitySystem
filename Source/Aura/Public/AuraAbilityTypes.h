@@ -3,6 +3,56 @@
 #include "GameplayEffectTypes.h"  // Include base gameplay effect functionality from Unreal Engine
 #include "AuraAbilityTypes.generated.h"  // Generated header for UE reflection system
 
+class UGameplayEffect;
+
+/**
+ * Structure containing parameters for damage-based gameplay effects
+ * Used to configure both immediate damage and damage-over-time (debuff) effects
+ * Stores references to source and target ability components, damage values,
+ * and debuff-specific parameters like chance, damage, duration, and frequency
+ */
+USTRUCT(BlueprintType)
+struct FDamageEffectParams
+{
+    GENERATED_BODY()
+
+    FDamageEffectParams(){}
+
+    UPROPERTY()
+    TObjectPtr<UObject> WorldContextObject = nullptr;
+
+    UPROPERTY()
+    TSubclassOf<UGameplayEffect> DamageGameplayEffectClass = nullptr;
+
+    UPROPERTY()
+    TObjectPtr<UAbilitySystemComponent> SourceAbilitySystemComponent;
+
+    UPROPERTY()
+    TObjectPtr<UAbilitySystemComponent> TargetAbilitySystemComponent;
+
+    UPROPERTY()
+    float BaseDamage = 0.f;
+
+    UPROPERTY()
+    float AbilityLevel = 1.f;
+
+    UPROPERTY()
+    FGameplayTag DamageType = FGameplayTag();
+
+    UPROPERTY()
+    float DebuffChance = 0.f;
+
+    UPROPERTY()
+    float DebuffDamage = 0.f;
+
+    UPROPERTY()
+    float DebuffDuration = 0.f;
+
+    UPROPERTY()
+    float DebuffFrequency = 0.f;
+};
+
+
 // Custom gameplay effect context structure that can be used in Blueprints
 USTRUCT(BlueprintType)
 struct FAuraGameplayEffectContext : public FGameplayEffectContext
@@ -12,10 +62,20 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
     public:
         bool IsCriticalHit() const { return bIsCriticalHit; }
         bool IsBlockedHit() const { return bIsBlockedHit; }
+        bool IsSuccessfulDebuff() const { return bIsSuccessfulDebuff; }
+        float GetDebuffDamage() const { return DebuffDamage; }
+        float GetDebuffDuration() const { return DebuffDuration; }
+        float GetDebuffFrequency() const { return DebuffFrequency; }
+        TSharedPtr<FGameplayTag> GetDamageType() const { return DamageType; }
 
         // Setter functions to modify critical and blocked hit states
         void SetIsCriticalHit(bool bInIsCriticalHit) { bIsCriticalHit = bInIsCriticalHit; }
         void SetIsBlockedHit(bool bInIsBlockedHit) { bIsBlockedHit = bInIsBlockedHit; }
+        void SetIsSuccessfulDebuff(bool bInIsSuccessfulDebuff) { bIsSuccessfulDebuff = bInIsSuccessfulDebuff; }
+        void SetDebuffDamage(float InDamage) { DebuffDamage = InDamage; }
+        void SetDebuffDuration(float InDuration) { DebuffDuration = InDuration; }
+        void SetDebuffFrequency(float InFrequency) { DebuffFrequency = InFrequency; }
+        void SetDamageType(TSharedPtr<FGameplayTag> InDamageType) { DamageType = InDamageType; }
         
         /**
          * Required override to provide the correct struct for serialization
@@ -61,6 +121,20 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
         
         UPROPERTY()
         bool bIsCriticalHit = false;  // Tracks if the hit was critical
+
+        UPROPERTY()
+        bool bIsSuccessfulDebuff = false;
+
+        UPROPERTY()
+        float DebuffDamage = 0.f;
+
+        UPROPERTY()
+        float DebuffDuration = 0.f;
+
+        UPROPERTY()
+        float DebuffFrequency = 0.f;
+
+        TSharedPtr<FGameplayTag> DamageType;
 };
 
 // Trait specification for the custom gameplay effect context

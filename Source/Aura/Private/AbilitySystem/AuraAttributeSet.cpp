@@ -6,6 +6,7 @@
 #include "AuraGameplayTags.h"
 #include "GameFramework/Character.h"
 #include "GameplayEffectExtension.h"
+#include "AbilitySystem/AuraAbilitySystemComponent.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "Interaction/CombatInterface.h"
 #include "Interaction/PlayerInterface.h"
@@ -79,77 +80,95 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 	//Meta-attribute for incoming damage. Only available on the server.
 	if (Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
 	{
-		// Get and reset the incoming damage value
-		const float LocalIncomingDamage = GetIncomingDamage();
-		SetIncomingDamage(0);
-	
-		if (LocalIncomingDamage > 0)
-		{
-			// Calculate and apply new health value after taking damage
-			const float NewHealth = GetHealth() - LocalIncomingDamage;
-			SetHealth(FMath::Clamp(NewHealth, 0.0f, GetMaxHealth()));
-		
-			// Check if damage was fatal
-			const bool bFatal = NewHealth <= 0;
-			if (bFatal)
-			{
-				// If fatal, get combat interface and call Die()
-				ICombatInterface* CombatInterface = Cast<ICombatInterface>(Props.TargetAvatarActor);
-				if (CombatInterface)
-				{
-					CombatInterface->Die();
-				}
-				SendXPEvent(Props);
-			}
-			else
-			{
-				// If not fatal, trigger hit reaction animation
-				FGameplayTagContainer TagContainer;
-				TagContainer.AddTag(FAuraGameplayTags::Get().Effects_HitReact);
-				Props.TargetASC->TryActivateAbilitiesByTag(TagContainer);//Checks all assigned abilities to enemy asc.
-			}
-	
-			// Get block/crit info and show damage numbers
-			const bool bBlock = UAuraAbilitySystemLibrary::IsBlockedHit(Props.EffectContextHandle);
-			const bool bCritical = UAuraAbilitySystemLibrary::IsCriticalHit(Props.EffectContextHandle);
-			ShowFloatingText(Props, LocalIncomingDamage,bBlock,bCritical);
-		}
+		HandleIncomingDamage(Props);
 	}
 
 	if (Data.EvaluatedData.Attribute == GetIncomingXPAttribute())
 	{
-		// Get and reset the incoming XP value
-		const float LocalIncomingXP = GetIncomingXP();
-		SetIncomingXP(0);
-		
-		// Source Character is the owner, since GA_ListenForEvents applies GE_EventBasedEffect, adding to IncomingXP
-		if (Props.SourceCharacter->Implements<UPlayerInterface>() && Props.SourceCharacter->Implements<UCombatInterface>())
-		{
-			const int32 CurrentLevel = ICombatInterface::Execute_GetPlayerLevel(Props.SourceCharacter);
-			const int32 CurrentXP = IPlayerInterface::Execute_GetXP(Props.SourceCharacter);
+		HandleIncomingXP(Props);
+	}
+}
 
-			const int32 NewLevel = IPlayerInterface::Execute_FindLevelForXP(Props.SourceCharacter, CurrentXP + LocalIncomingXP);
-			const int32 NumLevelUps = NewLevel - CurrentLevel;
-			if (NumLevelUps > 0)
-			{
-				//Adds the player level and attribute points according to the player level. Checks the DA.
-				const int32 AttributePointsReward = IPlayerInterface::Execute_GetAttributePointsReward(Props.SourceCharacter, CurrentLevel);
-				const int32 SpellPointsReward = IPlayerInterface::Execute_GetSpellPointsReward(Props.SourceCharacter, CurrentLevel);
-
-				IPlayerInterface::Execute_AddToPlayerLevel(Props.SourceCharacter, NumLevelUps);
-				IPlayerInterface::Execute_AddToAttributePoints(Props.SourceCharacter, AttributePointsReward);
-				IPlayerInterface::Execute_AddToSpellPoints(Props.SourceCharacter, SpellPointsReward);
+void UAuraAttributeSet::HandleIncomingDamage(const FEffectProperties& Props)
+{
+	// Get and reset the incoming damage value
+	const float LocalIncomingDamage = GetIncomingDamage();
+	SetIncomingDamage(0);
 	
-				bTopOffHealth = true;
-				bTopOffMana = true;
-
-				//Spawn the effects when leveling up.
-				IPlayerInterface::Execute_LevelUp(Props.SourceCharacter);
+	if (LocalIncomingDamage > 0)
+	{
+		// Calculate and apply new health value after taking damage
+		const float NewHealth = GetHealth() - LocalIncomingDamage;
+		SetHealth(FMath::Clamp(NewHealth, 0.0f, GetMaxHealth()));
+		
+		// Check if damage was fatal
+		const bool bFatal = NewHealth <= 0;
+		if (bFatal)
+		{
+			// If fatal, get combat interface and call Die()
+			ICombatInterface* CombatInterface = Cast<ICombatInterface>(Props.TargetAvatarActor);
+			if (CombatInterface)
+			{
+				CombatInterface->Die();
 			}
-			
-			IPlayerInterface::Execute_AddToXP(Props.SourceCharacter, LocalIncomingXP);
+			SendXPEvent(Props);
+		}
+		else
+		{
+			// If not fatal, trigger hit reaction animation
+			FGameplayTagContainer TagContainer;
+			TagContainer.AddTag(FAuraGameplayTags::Get().Effects_HitReact);
+			Props.TargetASC->TryActivateAbilitiesByTag(TagContainer);//Checks all assigned abilities to enemy asc.
+		}
+	
+		// Get block/crit info and show damage numbers
+		const bool bBlock = UAuraAbilitySystemLibrary::IsBlockedHit(Props.EffectContextHandle);
+		const bool bCritical = UAuraAbilitySystemLibrary::IsCriticalHit(Props.EffectContextHandle);
+		ShowFloatingText(Props, LocalIncomingDamage,bBlock,bCritical);
+		if (UAuraAbilitySystemLibrary::IsSuccessfulDebuff(Props.EffectContextHandle))
+		{
+			Debuff(Props);
 		}
 	}
+}
+
+void UAuraAttributeSet::HandleIncomingXP(const FEffectProperties& Props)
+{
+	// Get and reset the incoming XP value
+	const float LocalIncomingXP = GetIncomingXP();
+	SetIncomingXP(0);
+		
+	// Source Character is the owner, since GA_ListenForEvents applies GE_EventBasedEffect, adding to IncomingXP
+	if (Props.SourceCharacter->Implements<UPlayerInterface>() && Props.SourceCharacter->Implements<UCombatInterface>())
+	{
+		const int32 CurrentLevel = ICombatInterface::Execute_GetPlayerLevel(Props.SourceCharacter);
+		const int32 CurrentXP = IPlayerInterface::Execute_GetXP(Props.SourceCharacter);
+
+		const int32 NewLevel = IPlayerInterface::Execute_FindLevelForXP(Props.SourceCharacter, CurrentXP + LocalIncomingXP);
+		const int32 NumLevelUps = NewLevel - CurrentLevel;
+		if (NumLevelUps > 0)
+		{
+			//Adds the player level and attribute points according to the player level. Checks the DA.
+			const int32 AttributePointsReward = IPlayerInterface::Execute_GetAttributePointsReward(Props.SourceCharacter, CurrentLevel);
+			const int32 SpellPointsReward = IPlayerInterface::Execute_GetSpellPointsReward(Props.SourceCharacter, CurrentLevel);
+
+			IPlayerInterface::Execute_AddToPlayerLevel(Props.SourceCharacter, NumLevelUps);
+			IPlayerInterface::Execute_AddToAttributePoints(Props.SourceCharacter, AttributePointsReward);
+			IPlayerInterface::Execute_AddToSpellPoints(Props.SourceCharacter, SpellPointsReward);
+	
+			bTopOffHealth = true;
+			bTopOffMana = true;
+
+			//Spawn the effects when leveling up.
+			IPlayerInterface::Execute_LevelUp(Props.SourceCharacter);
+		}
+			
+		IPlayerInterface::Execute_AddToXP(Props.SourceCharacter, LocalIncomingXP);
+	}
+}
+
+void UAuraAttributeSet::Debuff(const FEffectProperties& Props)
+{
 }
 
 //Called after an attribute value changes.
@@ -390,3 +409,5 @@ void UAuraAttributeSet::OnRep_PhysicalResistance(const FGameplayAttributeData& O
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, PhysicalResistance, OldPhysicalResistance);
 }
+
+

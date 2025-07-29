@@ -175,7 +175,8 @@ void AAuraCharacter::InitAbilityActorInfo()
 	
 	AbilitySystemComponent = AuraPlayerState->GetAbilitySystemComponent();
 	AttributeSet = AuraPlayerState->GetAttributeSet();
-
+	OnAscRegistered.Broadcast(AbilitySystemComponent);
+	
 	//Initialize HUD after all the information is set for both server and client.
 	//Should no use assert check() as on the client this will be null for other player's character.
 	if (AAuraPlayerController* AuraPlayerController = Cast<AAuraPlayerController>(GetController()))

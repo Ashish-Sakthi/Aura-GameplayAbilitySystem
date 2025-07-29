@@ -3,6 +3,7 @@
 #include "AbilitySystem/AuraAttributeSet.h"
 
 #include "AbilitySystemBlueprintLibrary.h"
+#include "AuraAbilityTypes.h"
 #include "AuraGameplayTags.h"
 #include "GameFramework/Character.h"
 #include "GameplayEffectExtension.h"
@@ -12,6 +13,7 @@
 #include "Interaction/PlayerInterface.h"
 #include "Net/UnrealNetwork.h" // Required for replication macros like DOREPLIFETIME
 #include "Player/AuraPlayerController.h"
+#include "GameplayEffectComponents/TargetTagsGameplayEffectComponent.h"
 
 // Constructor - Initialize default values if needed
 UAuraAttributeSet::UAuraAttributeSet()
@@ -67,6 +69,9 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 
 	//Used to receive all the important data from the effect from "Data" variable and store it in "Props" Struct.
 	SetEffectProperties(Data, Props);
+
+	//If dead . dont do anything
+	if(Props.TargetCharacter->Implements<UCombatInterface>() && ICombatInterface::Execute_IsDead(Props.TargetCharacter)) return;
 
 	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
 	{
@@ -167,8 +172,68 @@ void UAuraAttributeSet::HandleIncomingXP(const FEffectProperties& Props)
 	}
 }
 
+/**
+ * Creates and applies a dynamic debuff effect based on the damage type.
+ * Configures the debuff with damage, duration, frequency and stacking behavior.
+ * Used to apply damage-over-time effects to the target.
+ * 
+ * @param Props - Properties containing source and target information.
+ */
 void UAuraAttributeSet::Debuff(const FEffectProperties& Props)
 {
+	// Get gameplay tags and create effect context
+	const FAuraGameplayTags& GameplayTags = FAuraGameplayTags::Get();
+	FGameplayEffectContextHandle EffectContext = Props.SourceASC->MakeEffectContext();
+	EffectContext.AddSourceObject(Props.SourceAvatarActor);
+
+	// Get debuff parameters from effect context
+	const FGameplayTag DamageType = UAuraAbilitySystemLibrary::GetDamageType(Props.EffectContextHandle);
+	const float DebuffDamage = UAuraAbilitySystemLibrary::GetDebuffDamage(Props.EffectContextHandle);
+	const float DebuffDuration = UAuraAbilitySystemLibrary::GetDebuffDuration(Props.EffectContextHandle);
+	const float DebuffFrequency = UAuraAbilitySystemLibrary::GetDebuffFrequency(Props.EffectContextHandle);
+
+	// Create dynamic gameplay effect
+	FString DebuffName = FString::Printf(TEXT("DynamicDebuff_%s"), *DamageType.ToString());
+	UGameplayEffect* Effect = NewObject<UGameplayEffect>(GetTransientPackage(), FName(DebuffName));
+
+	// Configure effect duration and frequency
+	Effect->DurationPolicy = EGameplayEffectDurationType::HasDuration;
+	Effect->Period = DebuffFrequency;
+	Effect->DurationMagnitude = FScalableFloat(DebuffDuration);
+
+
+	// Create tag container for debuff effects
+	FInheritedTagContainer TagContainer = FInheritedTagContainer();
+	// Get component to modify target tags
+	UTargetTagsGameplayEffectComponent& Component = Effect->FindOrAddComponent<UTargetTagsGameplayEffectComponent>();
+	// Add debuff tag based on damage type to both added and combined tags
+	TagContainer.Added.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]);
+	TagContainer.CombinedTags.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]); 
+	// Apply tag changes to the effect component
+	Component.SetAndApplyTargetTagChanges(TagContainer);
+
+	// Configure stacking behavior
+	Effect->StackingType = EGameplayEffectStackingType::AggregateBySource;
+	Effect->StackLimitCount = 1;
+
+	// Add damage modifier
+	const int32 Index = Effect->Modifiers.Num();
+	Effect->Modifiers.Add(FGameplayModifierInfo());
+	FGameplayModifierInfo& ModifierInfo = Effect->Modifiers[Index];
+
+	ModifierInfo.ModifierMagnitude = FScalableFloat(DebuffDamage);
+	ModifierInfo.ModifierOp = EGameplayModOp::Additive;
+	ModifierInfo.Attribute = GetIncomingDamageAttribute();
+	
+	// Create and apply effect spec to target
+	if (FGameplayEffectSpec* MutableSpec = new FGameplayEffectSpec(Effect, EffectContext, 1.f))
+	{
+		FAuraGameplayEffectContext* AuraContext = static_cast<FAuraGameplayEffectContext*>(MutableSpec->GetContext().Get());
+		TSharedPtr<FGameplayTag> DebuffDamageType = MakeShareable(new FGameplayTag(DamageType));
+		AuraContext->SetDamageType(DebuffDamageType);
+
+		Props.TargetASC->ApplyGameplayEffectSpecToSelf(*MutableSpec);
+	}
 }
 
 //Called after an attribute value changes.

@@ -53,6 +53,9 @@ struct FDamageEffectParams
 
     UPROPERTY()
     float DeathImpulseMagnitude = 0.f;
+
+    UPROPERTY()
+    FVector DeathImpulse = FVector::ZeroVector;
 };
 
 
@@ -70,6 +73,7 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
         float GetDebuffDuration() const { return DebuffDuration; }
         float GetDebuffFrequency() const { return DebuffFrequency; }
         TSharedPtr<FGameplayTag> GetDamageType() const { return DamageType; }
+        FVector GetDeathImpulse() const { return DeathImpulse; }
 
         // Setter functions to modify critical and blocked hit states
         void SetIsCriticalHit(bool bInIsCriticalHit) { bIsCriticalHit = bInIsCriticalHit; }
@@ -79,6 +83,7 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
         void SetDebuffDuration(float InDuration) { DebuffDuration = InDuration; }
         void SetDebuffFrequency(float InFrequency) { DebuffFrequency = InFrequency; }
         void SetDamageType(TSharedPtr<FGameplayTag> InDamageType) { DamageType = InDamageType; }
+        void SetDeathImpulse(const FVector& InImpulse) { DeathImpulse = InImpulse; }
         
         /**
          * Required override to provide the correct struct for serialization
@@ -138,6 +143,9 @@ struct FAuraGameplayEffectContext : public FGameplayEffectContext
         float DebuffFrequency = 0.f;
 
         TSharedPtr<FGameplayTag> DamageType;
+
+        UPROPERTY()
+        FVector DeathImpulse = FVector::ZeroVector;
 };
 
 // Trait specification for the custom gameplay effect context

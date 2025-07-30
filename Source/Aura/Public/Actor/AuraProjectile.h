@@ -33,6 +33,9 @@ public:
 	//Meta = (ExposeOnSpawn = true): Makes this property settable when the actor is spawned
 	UPROPERTY(BlueprintReadWrite, meta = (ExposeOnSpawn = true))
 	FDamageEffectParams DamageEffectParams;
+
+	UPROPERTY()
+	TObjectPtr<USceneComponent> HomingTargetSceneComponent;
 	
 protected:
 	virtual void BeginPlay() override;

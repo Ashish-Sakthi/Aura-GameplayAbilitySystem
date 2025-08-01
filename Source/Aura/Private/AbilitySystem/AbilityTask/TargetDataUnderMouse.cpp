@@ -3,6 +3,7 @@
 
 #include "AbilitySystem/AbilityTask//TargetDataUnderMouse.h"
 #include "AbilitySystemComponent.h"
+#include "Aura/Aura.h"
 
 /**
  * Implements functions for sending local player's mouse position data to the server.
@@ -57,7 +58,7 @@ void UTargetDataUnderMouse::SendMouseCursorData()
 	// Get the player controller and perform line trace under the cursor
 	APlayerController* PC = Ability->GetCurrentActorInfo()->PlayerController.Get();
 	FHitResult CursorHit;
-	PC->GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
+	PC->GetHitResultUnderCursor(ECC_Target, false, CursorHit);
 
 	// Create target data handle and populate with the hit result
 	FGameplayAbilityTargetDataHandle DataHandle;

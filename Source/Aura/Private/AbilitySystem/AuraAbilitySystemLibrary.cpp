@@ -350,6 +350,37 @@ void UAuraAbilitySystemLibrary::GetLivePlayersWithinRadius(const UObject* WorldC
 	}
 }
 
+void UAuraAbilitySystemLibrary::GetClosestTargets(int32 MaxTargets, const TArray<AActor*>& Actors,
+	TArray<AActor*>& OutClosestTargets, const FVector& Origin)
+{
+	// Return early if MaxTargets is less than 1 since we can't get closest targets
+	if (MaxTargets < 1) return;
+ 
+	// Copy input Actors array to OutClosestTargets array
+	OutClosestTargets = Actors;
+	
+	// Algo::Sort repeatedly picks pairs of actors to compare using the lambda.
+	// Compares one actor distance with other to arrange the array.
+	// After many comparisons and rearrangements, the array is sorted from closest to farthest based on the lambda’s result.
+	Algo::Sort(OutClosestTargets, [&Origin](AActor* A, AActor* B)
+	{
+		// Get squared distance between Actor A and Origin point
+		const float DistanceA = FVector::DistSquared(A->GetActorLocation(), Origin);
+		
+		// Get squared distance between Actor B and Origin point  
+		const float DistanceB = FVector::DistSquared(B->GetActorLocation(), Origin);
+		
+		// Return true if Actor A is closer than Actor B to put closer actors first
+		return DistanceA < DistanceB;
+	});
+	
+	// If we have more actors than MaxTargets, remove the excess furthest actors
+	if (OutClosestTargets.Num() > MaxTargets)
+	{
+		OutClosestTargets.RemoveAt(MaxTargets, OutClosestTargets.Num() - MaxTargets);
+	}
+}
+
 
 // Returns true if actors are on opposing teams (one is player, other is enemy)
 bool UAuraAbilitySystemLibrary::IsNotFriend(AActor* FirstActor, AActor* SecondActor)

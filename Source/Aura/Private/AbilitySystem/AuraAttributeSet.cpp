@@ -213,9 +213,28 @@ void UAuraAttributeSet::Debuff(const FEffectProperties& Props)
 	// Get component to modify target tags
 	UTargetTagsGameplayEffectComponent& Component = Effect->FindOrAddComponent<UTargetTagsGameplayEffectComponent>();
 	// Add debuff tag based on damage type to both added and combined tags
+	const FGameplayTag DebuffTag = GameplayTags.DamageTypesToDebuffs[DamageType];
 	TagContainer.Added.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]);
-	TagContainer.CombinedTags.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]); 
+	//TagContainer.CombinedTags.AddTag(GameplayTags.DamageTypesToDebuffs[DamageType]); 
 	// Apply tag changes to the effect component
+	
+
+	if (DebuffTag.MatchesTagExact(GameplayTags.Debuff_Stun))
+	{
+		TagContainer.Added.AddTag(GameplayTags.Player_Block_CursorTrace);
+		TagContainer.CombinedTags.AddTag(GameplayTags.Player_Block_CursorTrace);
+
+		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputHeld);
+		TagContainer.CombinedTags.AddTag(GameplayTags.Player_Block_InputHeld);
+
+		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputPressed);
+		TagContainer.CombinedTags.AddTag(GameplayTags.Player_Block_InputPressed);
+
+		TagContainer.Added.AddTag(GameplayTags.Player_Block_InputReleased);
+		TagContainer.CombinedTags.AddTag(GameplayTags.Player_Block_InputReleased);
+
+	}
+
 	Component.SetAndApplyTargetTagChanges(TagContainer);
 
 	// Configure stacking behavior

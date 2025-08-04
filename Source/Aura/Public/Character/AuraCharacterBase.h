@@ -29,7 +29,7 @@ class AURA_API AAuraCharacterBase : public ACharacter,public IAbilitySystemInter
 
 public:
 	AAuraCharacterBase();
-
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const {return AttributeSet;};
 
@@ -59,6 +59,11 @@ public:
 
 	UPROPERTY(EditAnywhere,Category="Combat")
 	TArray<FTaggedMontage> AttackMontages;
+
+	UPROPERTY(Replicated, BlueprintReadOnly)
+	bool bIsStunned = false;
+
+	virtual void StunTagChanged(const FGameplayTag  CallbackTag, int32 NewCount);
 	
 protected:
 	virtual void BeginPlay() override;
@@ -79,6 +84,9 @@ protected:
 	FName TailSocketName;
 	
 	bool bIsDead = false;
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Combat")
+	float BaseWalkSpeed = 600.f;
 
 	UPROPERTY()
 	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;

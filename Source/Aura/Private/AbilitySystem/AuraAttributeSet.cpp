@@ -121,10 +121,13 @@ void UAuraAttributeSet::HandleIncomingDamage(const FEffectProperties& Props)
 		else
 		{
 			// If not fatal, trigger hit reaction animation
-			FGameplayTagContainer TagContainer;
-			TagContainer.AddTag(FAuraGameplayTags::Get().Effects_HitReact);
-			Props.TargetASC->TryActivateAbilitiesByTag(TagContainer);//Checks all assigned abilities to enemy asc.
-
+			if (Props.TargetCharacter->Implements<UCombatInterface>() && !ICombatInterface::Execute_IsBeingShocked(Props.TargetCharacter))
+			{
+				FGameplayTagContainer TagContainer;
+                TagContainer.AddTag(FAuraGameplayTags::Get().Effects_HitReact);
+                Props.TargetASC->TryActivateAbilitiesByTag(TagContainer);//Checks all assigned abilities to enemy asc.
+			}
+			
 			const FVector& KnockbackForce = UAuraAbilitySystemLibrary::GetKnockbackForce(Props.EffectContextHandle);
 			if (!KnockbackForce.IsNearlyZero(1.f))
 			{

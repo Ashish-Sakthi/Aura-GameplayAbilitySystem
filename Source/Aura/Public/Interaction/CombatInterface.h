@@ -14,6 +14,7 @@ enum class ECharacterClass : uint8;
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnASCRegistered, UAbilitySystemComponent*)
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnDeath, AActor*, DeadActor);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnDamageSignature, float /*DamageAmount*/);
 
 USTRUCT(BlueprintType)
 struct FTaggedMontage
@@ -94,8 +95,8 @@ public:
 	USkeletalMeshComponent* GetWeapon();
 
 	virtual FOnASCRegistered& GetOnASCRegisteredDelegate() = 0;
-
 	virtual FOnDeath& GetOnDeathDelegate() = 0;
+	virtual FOnDamageSignature& GetOnDamageSignature() = 0; 
 
 	UFUNCTION(BlueprintImplementableEvent,BlueprintCallable)
 	void SetInShockLoop(bool InShockLoop);

@@ -17,7 +17,7 @@
 bool UAuraAbilitySystemLibrary::MakeWidgetControllerParams(const UObject* WorldContextObject,
 	FWidgetControllerParams& OutWCParams, AAuraHUD*& OutAuraHUD)
 {
-	// Get the player controller from the world context
+	// Get the player controller from world context
 	if (APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject, 0))
 	{
 		// Cast the HUD to AuraHUD type

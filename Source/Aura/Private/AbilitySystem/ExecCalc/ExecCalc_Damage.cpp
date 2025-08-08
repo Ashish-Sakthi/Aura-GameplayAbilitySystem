@@ -184,6 +184,10 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 
 		// Get Damage Set by caller magnitude.
 		float DamageTypeValue = Spec.GetSetByCallerMagnitude(DamageTypeTag,false);
+		if (DamageTypeValue <= 0.f)
+		{
+			continue;
+		}
 		
 		float Resistance = 0.f;
 		ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(CaptureDef, EvaluationParameters, Resistance);
@@ -200,6 +204,7 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 			//		on the Victim, which will then broadcast OnDamageDelegate)
 			// 5. In Lambda, set DamageTypeValue to the damage received from the broadcast *
 
+			//Called after apply radial damage . As take damage broadcast this delegate.
 			if (ICombatInterface* CombatInterface = Cast<ICombatInterface>(TargetAvatar))
 			{
 				CombatInterface->GetOnDamageSignature().AddLambda([&](float DamageAmount)
@@ -207,6 +212,8 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 					DamageTypeValue = DamageAmount;
 				});
 			}
+
+			//This calls take damage in char base
 			UGameplayStatics::ApplyRadialDamageWithFalloff(
 				TargetAvatar,
 				DamageTypeValue,

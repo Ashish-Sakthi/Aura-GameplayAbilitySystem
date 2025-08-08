@@ -82,10 +82,10 @@ TArray<USceneComponent*> APointCollection::GetGroundPoints(const FVector& Ground
 			Pt->SetWorldLocation(Pt_0->GetComponentLocation() + ToPoint);
 		}
 
-		// Create trace points 500 units directly above and below the current point location
+		// Create trace points 300 units directly above and below the current point location
 		// These will be used to find the ground position below each point
-		const FVector RaisedLocation = FVector(Pt->GetComponentLocation().X, Pt->GetComponentLocation().Y, Pt->GetComponentLocation().Z + 500.f);
-		const FVector LoweredLocation = FVector(Pt->GetComponentLocation().X, Pt->GetComponentLocation().Y, Pt->GetComponentLocation().Z - 500.f);
+		const FVector RaisedLocation = FVector(Pt->GetComponentLocation().X, Pt->GetComponentLocation().Y, Pt->GetComponentLocation().Z + 300.f);
+		const FVector LoweredLocation = FVector(Pt->GetComponentLocation().X, Pt->GetComponentLocation().Y, Pt->GetComponentLocation().Z - 300.f);
 
 		// Setup variables for our line trace
 		FHitResult HitResult;

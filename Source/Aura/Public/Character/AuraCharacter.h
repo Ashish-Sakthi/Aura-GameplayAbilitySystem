@@ -25,6 +25,7 @@ public:
 	AAuraCharacter();
 	virtual void PossessedBy(AController* NewController) override;
 	virtual void OnRep_PlayerState() override;
+	void LoadProgress();
 
 	/* Player Interface */
 	virtual void AddToXP_Implementation(int32 InXP) override;

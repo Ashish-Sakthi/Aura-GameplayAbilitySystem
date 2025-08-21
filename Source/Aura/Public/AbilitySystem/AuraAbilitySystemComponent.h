@@ -6,7 +6,8 @@
 #include "AbilitySystemComponent.h"
 #include "AuraAbilitySystemComponent.generated.h"
 
-DECLARE_MULTICAST_DELEGATE_OneParam(FEffectAssetTags,const FGameplayTagContainer& /*AssetTags*/)
+class ULoadScreenSaveGame;
+DECLARE_MULTICAST_DELEGATE_OneParam(FEffectAssetTags, const FGameplayTagContainer& /*AssetTags*/)
 /* A Multicast delegate that broadcasts when abilities are given to a character, with the AuraAbilitySystemComponent as a parameter */
 DECLARE_MULTICAST_DELEGATE(FAbilitiesGiven)
 /* Delegate used to iterate through gameplay abilities, taking a single FGameplayAbilitySpec parameter */
@@ -42,6 +43,7 @@ public:
 
 	void AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities);
 	void AddCharacterPassiveAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupPassiveAbilities);
+	void AddCharacterAbilitiesFromSaveData(ULoadScreenSaveGame* SaveData);
 	bool bStartupAbilitiesGiven = false;
 
 	void AbilityInputTagPressed(const FGameplayTag& InputTag);

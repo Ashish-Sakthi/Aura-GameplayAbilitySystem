@@ -9,31 +9,21 @@
   <component name="ChangeListManager">
     <list default="true" id="40afd753-02d0-487b-9c1a-112ebffea475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Aura.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Aura.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Arcane/ArcaneShards/GA_ArcaneShards.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Arcane/ArcaneShards/GA_ArcaneShards.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Fire/FireBlast/GA_FireBlast.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Fire/FireBlast/GA_FireBlast.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Fire/FireBolt/GA_FireBolt.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Fire/FireBolt/GA_FireBolt.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Lightning/GA_Electricute.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Lightning/GA_Electricute.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Data/DA_CharacterClassInfo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Data/DA_CharacterClassInfo.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Enemy/Abilities/GA_MeleeAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Enemy/Abilities/GA_MeleeAttack.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Enemy/Abilities/GA_RangedAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Enemy/Abilities/GA_RangedAttack.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Enemy/Effects/GE_Damage.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/LoadMenu/WBP_LoadSlot_Taken.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/LoadMenu/WBP_LoadSlot_Taken.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/Overlay/WBP_Overlay.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/Overlay/WBP_Overlay.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/SpellGlobes/WBP_ValueGlobe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/SpellGlobes/WBP_ValueGlobe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Dungeon.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Dungeon.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/AbilitySystem/AuraAbilitySystemLibrary.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/AbilitySystem/AuraAbilitySystemLibrary.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Passive_Startup/GA_ListenForEvent.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Aura/Abilities/Passive_Startup/GA_ListenForEvent.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Data/DA_AbilityInfo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Data/DA_AbilityInfo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Characters/Aura/BP_AuraCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Characters/Aura/BP_AuraCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/AbilitySystem/AuraAbilitySystemComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/AbilitySystem/AuraAbilitySystemComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/AbilitySystem/Passive/PassiveNiagaraComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/AbilitySystem/Passive/PassiveNiagaraComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Character/AuraCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Character/AuraCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Player/AuraPlayerState.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Player/AuraPlayerState.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/UI/ViewModel/MVVM_LoadScreen.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/UI/ViewModel/MVVM_LoadScreen.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/UI/ViewModel/MVVM_LoadSlot.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/UI/ViewModel/MVVM_LoadSlot.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/UI/WidgetController/OverlayWidgetController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/UI/WidgetController/OverlayWidgetController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/AuraAbilitySystemLibrary.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/AuraAbilitySystemLibrary.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/Data/CharacterClassInfo.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/Data/CharacterClassInfo.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Character/AuraCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Character/AuraCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Checkpoint/Checkpoint.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Checkpoint/Checkpoint.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Game/AuraGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Game/AuraGameModeBase.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Game/LoadScreenSaveGame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Game/LoadScreenSaveGame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/AuraAbilitySystemComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/AuraAbilitySystemComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/Passive/PassiveNiagaraComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/Passive/PassiveNiagaraComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Checkpoint/Checkpoint.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Checkpoint/Checkpoint.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Game/AuraGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Game/AuraGameModeBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Game/LoadScreenSaveGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Game/LoadScreenSaveGame.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Player/AuraPlayerState.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Player/AuraPlayerState.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/UI/ViewModel/MVVM_LoadSlot.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/UI/ViewModel/MVVM_LoadSlot.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/UI/WidgetController/OverlayWidgetController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/UI/WidgetController/OverlayWidgetController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +37,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://8" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://6" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/Aura/UHT/LoadScreenWidget.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/Runtime/OpenCV/Source/ThirdParty/OpenCV/include/opencv2/flann/logger.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/CoreUObject/Private/UObject/ScriptCore.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/ThirdParty/OpenXR/include/openxr/openxr.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -155,14 +146,6 @@
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/Aura.uproject" />
       <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Aura.uproject" />
       <option name="AUTO_SELECT_PRIORITY" value="10010" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Uproject" factoryName="rider.uproject">
-      <option name="DEFAULT_PROJECT_PATH" value="" />
-      <option name="PROJECT_FILE_PATH" value="" />
-      <option name="AUTO_SELECT_PRIORITY" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -271,6 +254,7 @@
       <workItem from="1755573092766" duration="4318000" />
       <workItem from="1755578532625" duration="4681000" />
       <workItem from="1755591227369" duration="8445000" />
+      <workItem from="1755745958883" duration="13915000" />
     </task>
     <servers />
   </component>

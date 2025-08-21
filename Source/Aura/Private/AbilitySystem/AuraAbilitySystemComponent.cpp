@@ -6,6 +6,7 @@
 #include "AbilitySystem/Abilities/AuraGameplayAbility.h"
 #include "AbilitySystem/Data/AbilityInfo.h"
 #include "Aura/AuraLogChannels.h"
+#include "Game/LoadScreenSaveGame.h"
 #include "Interaction/PlayerInterface.h"
 
 // Called after actor info is set: binds gameplay effect application events to custom client handler
@@ -41,8 +42,50 @@ void UAuraAbilitySystemComponent::AddCharacterPassiveAbilities(const TArray<TSub
     for (const TSubclassOf<UGameplayAbility> AbilityClass : StartupPassiveAbilities)
     {
        FGameplayAbilitySpec AbilitySpec(AbilityClass, 1);
+       AbilitySpec.DynamicAbilityTags.AddTag(FAuraGameplayTags::Get().Abilities_Status_Equipped);
        GiveAbilityAndActivateOnce(AbilitySpec);
     }
+}
+
+void UAuraAbilitySystemComponent::AddCharacterAbilitiesFromSaveData(ULoadScreenSaveGame* SaveData)
+{
+   // Iterate through each saved ability from the save data
+   for (const FSavedAbility& Data : SaveData->SavedAbilities)
+   {
+      // Create a loaded ability class from saved data
+      const TSubclassOf<UGameplayAbility> LoadedAbilityClass = Data.GameplayAbility;
+
+      // Create ability spec with saved level
+      FGameplayAbilitySpec LoadedAbilitySpec = FGameplayAbilitySpec(LoadedAbilityClass, Data.AbilityLevel);
+
+      // Add saved ability slot and status tags
+      LoadedAbilitySpec.DynamicAbilityTags.AddTag(Data.AbilitySlot);
+      LoadedAbilitySpec.DynamicAbilityTags.AddTag(Data.AbilityStatus);
+
+      // Handle offensive abilities
+      if (Data.AbilityType == FAuraGameplayTags::Get().Abilities_Type_Offensive)
+      {
+         GiveAbility(LoadedAbilitySpec);
+      }
+      // Handle passive abilities
+      else if (Data.AbilityType == FAuraGameplayTags::Get().Abilities_Type_Passive)
+      {
+         if (Data.AbilityStatus.MatchesTagExact(FAuraGameplayTags::Get().Abilities_Status_Equipped))
+         {
+            // Activate equipped passive abilities
+            GiveAbilityAndActivateOnce(LoadedAbilitySpec);
+            MulticastActivatePassiveEffect(Data.AbilityTag, true);
+         }
+         else
+         {
+            // Just give unequipped passive abilities without activating
+            GiveAbility(LoadedAbilitySpec);
+         }
+      }
+   }
+   // Mark startup abilities as given and broadcast delegate
+   bStartupAbilitiesGiven = true;
+   AbilitiesGivenDelegate.Broadcast();
 }
 
 void UAuraAbilitySystemComponent::AbilityInputTagPressed(const FGameplayTag& InputTag)
@@ -325,6 +368,8 @@ void UAuraAbilitySystemComponent::ServerEquipAbility_Implementation(const FGamep
                TryActivateAbility(AbilitySpec->Handle);
                MulticastActivatePassiveEffect(AbilityTag, true);
             }
+            AbilitySpec->DynamicAbilityTags.RemoveTag(GetStatusFromSpec(*AbilitySpec));
+            AbilitySpec->DynamicAbilityTags.AddTag(GameplayTags.Abilities_Status_Equipped);
          }
          AssignSlotToAbility(*AbilitySpec, Slot);
          MarkAbilitySpecDirty(*AbilitySpec);

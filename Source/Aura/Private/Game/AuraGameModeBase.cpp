@@ -14,6 +14,18 @@
 #include "UI/ViewModel/MVVM_LoadSlot.h"
 
 
+FString AAuraGameModeBase::GetMapNameFromMapAssetName(const FString& MapAssetName) const
+{
+	for (auto& Map : Maps)
+	{
+		if (Map.Value.ToSoftObjectPath().GetAssetName() == MapAssetName)
+		{
+			return Map.Key;
+		}
+	}
+	return FString();
+}
+
 AActor* AAuraGameModeBase::ChoosePlayerStart_Implementation(AController* Player)
 {
 	UAuraGameInstance* AuraGameInstance = Cast<UAuraGameInstance>(GetGameInstance());
@@ -117,7 +129,7 @@ void AAuraGameModeBase::SaveInGameProgressData(ULoadScreenSaveGame* SaveObject)
 	UGameplayStatics::SaveGameToSlot(SaveObject, InGameLoadSlotName, InGameLoadSlotIndex);
 }
 
-void AAuraGameModeBase::SaveWorldState(UWorld* World) const
+void AAuraGameModeBase::SaveWorldState(UWorld* World, const FString& DestinationMapAssetName) const
 {
 	// Get current world name without streaming level prefix
 	FString WorldName = World->GetMapName();
@@ -130,6 +142,12 @@ void AAuraGameModeBase::SaveWorldState(UWorld* World) const
 	// Get save game data for the current slot
 	if (ULoadScreenSaveGame* SaveGame = GetSaveSlotData(AuraGI->LoadSlotName, AuraGI->LoadSlotIndex))
 	{
+		if (DestinationMapAssetName != FString(""))
+		{
+			SaveGame->MapAssetName = DestinationMapAssetName;
+			SaveGame->MapName = GetMapNameFromMapAssetName(DestinationMapAssetName);
+		}
+		
 		// Create a new saved map entry if this world hasn't been saved before
 		if (!SaveGame->HasMap(WorldName))
 		{

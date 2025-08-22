@@ -7,16 +7,24 @@
 #include "GameFramework/PlayerController.h"
 #include "AuraPlayerController.generated.h"
 
+class IHighlightInterface;
 class AMagicCircle;
 class UNiagaraSystem;
 class UDamageTextComponent;
 class UAuraAbilitySystemComponent;
 class UAuraInputConfig;
-class IEnemyInterface;
 class UInputMappingContext;
 class UInputAction;
 class USplineComponent;
 struct FInputActionValue;
+
+
+enum class ETargetingStatus : uint8
+{
+	TargetingEnemy,
+	TargetingNonEnemy,
+	NotTargeting
+};
 
 /**
  * @class AAuraPlayerController
@@ -62,9 +70,11 @@ private:
 
 	void CursorTrace();
 
-	TScriptInterface<IEnemyInterface> LastActor; // You can easily access both the object and interface using TScriptInterface.
-	TScriptInterface<IEnemyInterface> ThisActor;
+	TObjectPtr<AActor> LastActor;
+	TObjectPtr<AActor> ThisActor;
 	FHitResult CursorHit;
+	static void HighlightActor(AActor* InActor);
+	static void UnHighlightActor(AActor* InActor);
 
 	//Bind to all the inputs for abilities.
 	void AbilityInputTagPressed(FGameplayTag InputTag);
@@ -84,7 +94,7 @@ private:
 	float FollowTime = 0.0f;//How long to follow the cursor.
 	float ShortPressThreshold = 0.3f;
 	bool bAutoRunning = false;
-	bool bTargeting = false;//hovering over enemy
+	ETargetingStatus TargetingStatus = ETargetingStatus::NotTargeting;//hovering over enemy
 
 	UPROPERTY(EditAnywhere)
 	float AutoRunAcceptanceRadius = 50.0f;

@@ -39,6 +39,7 @@ public:
 	virtual void Die(const FVector& DeathImpulse) override;
 	virtual void SetCombatTarget_Implementation(AActor* InCombatTarget) override;
 	virtual AActor* GetCombatTarget_Implementation() const override;
+	virtual void SetIsBeingShocked_Implementation(bool bInShock) override;
 	/* End of Combat Interface */
 	
 	UPROPERTY(BlueprintReadOnly , Category = "Combat")
@@ -57,7 +58,8 @@ public:
 	FOnAttributeChangedSignature OnMaxHealthChanged;
 	
 	void HitReactTagChanged(const FGameplayTag CallbackTag, int32 NewCount);
-	
+
+	void SetLevel(int32 InLevel) { Level = InLevel; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -78,5 +80,6 @@ protected:
 	UPROPERTY()
 	TObjectPtr<AAuraAIController> AuraAIController;
 
-	
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnLoot();
 };

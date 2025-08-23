@@ -9,11 +9,28 @@
   <component name="ChangeListManager">
     <list default="true" id="40afd753-02d0-487b-9c1a-112ebffea475" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Aura.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Aura.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Checkpoint/BP_MapEnterance.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Checkpoint/BP_MapEnterance.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/UI/LoadMenu/WBP_LoadScreen.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/UI/LoadMenu/WBP_LoadScreen.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AI/BehaviorTree/BB_EnemyBlackboard.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AI/BehaviorTree/BB_EnemyBlackboard.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AI/BehaviorTree/BT_EnemyBehaviorTree.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AI/BehaviorTree/BT_EnemyBehaviorTree.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Data/CT_Damage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Data/CT_Damage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Enemy/Abilities/GA_MeleeAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Enemy/Abilities/GA_MeleeAttack.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Characters/Aura/ABP_Aura.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Characters/Aura/ABP_Aura.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Characters/BP_EnemyBase.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Characters/BP_EnemyBase.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Game/BP_AuraGameMode.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Game/BP_AuraGameMode.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/Dungeon.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Dungeon.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/Dungeon_2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/Dungeon_2.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/AbilitySystem/AuraAbilitySystemLibrary.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/AbilitySystem/AuraAbilitySystemLibrary.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Character/AuraCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Character/AuraCharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Character/AuraEnemy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Character/AuraEnemy.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Checkpoint/Checkpoint.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Checkpoint/Checkpoint.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Private/Game/AuraGameModeBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/Game/AuraGameModeBase.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/Aura/Private/UI/ViewModel/MVVM_LoadScreen.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Private/UI/ViewModel/MVVM_LoadScreen.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/AuraAbilitySystemLibrary.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/AbilitySystem/AuraAbilitySystemLibrary.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Actor/AuraEffectActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Actor/AuraEffectActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Character/AuraCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Character/AuraCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Character/AuraCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Character/AuraCharacterBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Character/AuraEnemy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Character/AuraEnemy.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Game/AuraGameModeBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Game/AuraGameModeBase.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/Game/LoadScreenSaveGame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/Game/LoadScreenSaveGame.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/Aura/Public/UI/ViewModel/MVVM_LoadSlot.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/Aura/Public/UI/ViewModel/MVVM_LoadSlot.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,29 +44,39 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="cidr-memory-view://4" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Intermediate/Build/Win64/UnrealEditor/Inc/Aura/UHT/LoadScreenWidget.gen.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/Marketplace/Developer/RiderLink/Source/RD/thirdparty/spdlog/include/spdlog/sinks/syslog_sink.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/NNE/NNERuntimeORT/Source/ThirdParty/OnnxEditor/include/onnx/common/ir.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/Runtime/OpenCV/Source/ThirdParty/OpenCV/include/opencv2/face/facemarkLBF.hpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Plugins/Runtime/OpenCV/Source/ThirdParty/OpenCV/include/opencv2/flann/logger.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Editor/EditorStyle/Private/StarshipStyle.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Editor/Persona/Private/AnimationEditorPreviewScene.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Editor/UnrealEd/Private/Settings/LevelEditorPlaySettingsCustomization.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Editor/UnrealEd/Public/DragAndDrop/LevelDragDropOp.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/AIModule/Classes/Actions/PawnAction.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/AIModule/Classes/BehaviorTree/BTTaskNode.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/AIModule/Classes/BehaviorTree/Tasks/BTTask_BlueprintBase.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Private/Logging/StructuredLog.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Core/Public/Containers/Array.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/CoreUObject/Private/UObject/ScriptCore.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/Engine/CoreSettings.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/Engine/Engine.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/Engine/LevelStreamingAlwaysLoaded.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/GameFramework/PlayerController.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Classes/Kismet/GameplayStatics.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Private/CoreSettings.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Private/GameplayStatics.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Private/PlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Private/UnrealEngine.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Engine/Public/ReplayHelper.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Experimental/GeometryCollectionEngine/Public/GeometryCollection/GeometryCollectionDamagePropagationData.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/MovieSceneTracks/Public/TrackInstances/MovieSceneCameraCutTrackInstance.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/Navmesh/Public/Detour/DetourNavMeshQuery.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/RenderCore/Public/VertexFactory.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/Runtime/UMG/Private/UserWidget.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/ThirdParty/Boost/boost-1_82_0/include/boost/log/sinks/syslog_constants.hpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/ThirdParty/Eigen/Eigen/src/Core/ProductEvaluators.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/ThirdParty/OpenXR/include/openxr/openxr.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/ThirdParty/OpenXR/include/openxr/openxr_reflection.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/Softwares/Unreal/UE_5.4/Engine/Source/ThirdParty/Vulkan/Include/vulkan/vk_enum_string_helper.h" root0="FORCE_HIGHLIGHTING" />
@@ -269,6 +296,9 @@
       <workItem from="1755849232512" duration="9396000" />
       <workItem from="1755919089614" duration="211000" />
       <workItem from="1755920343694" duration="5867000" />
+      <workItem from="1755931949224" duration="785000" />
+      <workItem from="1755937428503" duration="8684000" />
+      <workItem from="1755947036986" duration="2459000" />
     </task>
     <servers />
   </component>

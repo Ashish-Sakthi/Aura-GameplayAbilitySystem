@@ -83,6 +83,8 @@ public:
 	UFUNCTION()
 	virtual void OnRep_Burned();
 	
+	void SetCharacterClass(ECharacterClass InClass) { CharacterClass = InClass; }
+	
 protected:
 	virtual void BeginPlay() override;
 
@@ -100,7 +102,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	FName TailSocketName;
-	
+
+	UPROPERTY(BlueprintReadOnly)
 	bool bIsDead = false;
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Combat")

@@ -168,6 +168,12 @@ AActor* AAuraEnemy::GetCombatTarget_Implementation() const
 	return CombatTarget;
 }
 
+void AAuraEnemy::SetIsBeingShocked_Implementation(bool bInShock)
+{
+	Super::SetIsBeingShocked_Implementation(bInShock);
+	if (AuraAIController) AuraAIController->GetBlackboardComponent()->SetValueAsBool(FName("InShockLoop"),bInShock);
+}
+
 int32 AAuraEnemy::GetPlayerLevel_Implementation()
 {
 	return Level;
@@ -177,5 +183,6 @@ void AAuraEnemy::Die(const FVector& DeathImpulse)
 {
 	SetLifeSpan(LifeSpan);
 	if (AuraAIController) AuraAIController->GetBlackboardComponent()->SetValueAsBool(FName("Dead"),true);
+	SpawnLoot();
 	Super::Die(DeathImpulse);
 }

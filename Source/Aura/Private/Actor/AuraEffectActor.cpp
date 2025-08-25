@@ -4,6 +4,7 @@
 #include "Actor/AuraEffectActor.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystem/AuraAttributeSet.h"
+#include "Kismet/KismetMathLibrary.h"
 
 AAuraEffectActor::AAuraEffectActor()
 {
@@ -11,9 +12,64 @@ AAuraEffectActor::AAuraEffectActor()
 	SetRootComponent(CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent")));
 }
 
+void AAuraEffectActor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	// Track time for sinusoidal movement
+	RunningTime += DeltaTime;
+	// Calculate the period of sine wave motion
+	const float SinePeriod = 2 * PI / SinePeriodConstant; 
+	// Reset running time when the period completes
+	if (RunningTime > SinePeriod)
+	{
+		RunningTime = 0.f;
+	}
+	// Update actor position/rotation based on movement settings
+	ItemMovement(DeltaTime);
+}
+
 void AAuraEffectActor::BeginPlay()
 {
 	Super::BeginPlay();
+	// Store initial transforms when an actor spawns
+	InitialLocation = GetActorLocation();
+	CalculatedLocation = InitialLocation;
+	CalculatedRotation = GetActorRotation();	
+}
+
+void AAuraEffectActor::StartSinusoidalMovement()
+{
+	// Enable sinusoidal up/down motion
+	bSinusoidalMovement = true;
+	// Reset location tracking
+	InitialLocation = GetActorLocation();
+	CalculatedLocation = InitialLocation;
+}
+
+void AAuraEffectActor::StartRotation()
+{
+	// Enable continuous rotation
+	bRotates = true;
+	// Store current rotation as starting point
+	CalculatedRotation = GetActorRotation();
+}
+
+void AAuraEffectActor::ItemMovement(float DeltaTime)
+{
+	if (bRotates)
+	{
+		// Calculate rotation change based on rotation rate
+		const FRotator DeltaRotation(0.f, DeltaTime * RotationRate, 0.f);
+		// Compose new rotation
+		CalculatedRotation = UKismetMathLibrary::ComposeRotators(CalculatedRotation, DeltaRotation);
+	}
+	if (bSinusoidalMovement)
+	{
+		// Calculate vertical offset using sine wave
+		const float Sine = SineAmplitude * FMath::Sin(RunningTime * SinePeriodConstant);
+		// Apply offset to the initial location
+		CalculatedLocation = InitialLocation + FVector(0.f, 0.f, Sine);
+	}
 }
 
 void AAuraEffectActor::ApplyEffectToTarget(AActor* TargetActor, TSubclassOf<UGameplayEffect> GameplayEffectClass)

@@ -7,7 +7,6 @@
 #include "ActiveGameplayEffectHandle.h"
 #include "AuraEffectActor.generated.h"
 
-struct FActiveGameplayEffectHandle;
 class UAbilitySystemComponent;
 class UGameplayEffect;
 
